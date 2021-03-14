@@ -1,5 +1,7 @@
 # brawlstarsutils
 A combination of brawl stars utilities
+How to use beta build:
+Go to https://replit.com/@OhOh1/BSU-V496
 Current Features:
 Power Point calculator with save and load system-credit to andersonjwan for this
 Chance calculator for all rarities except chromatic- made by me.
@@ -37,5 +39,6 @@ New selection menu (3 out of 3 utilities done)
 Random Background (2 out of 3 done)
 V4.9.8(Beta):
 Updating current gihub repo
+
 
 
