@@ -24,4 +24,18 @@ Added text next to percentages to make it easier to know your chances.
 V4.9.5:(Beta)
 Uploaded to GitHub
 More details coming so stay tuned
+Updated repo now available for download
+Renamed to BSU 
+V4.9.6:(Beta):
+New share feature for powerpoint calculator:
+When selecting 'Save As', name it 'share' without the quotation marks to print the data in the terminal.
+Sharing tools will become available soon
+Added brawlstats, a new tool to see your stats
+Database is a WIP and once I complete it, I will release version 5 to get it out of Beta
+V4.9.7:(Beta):
+New selection menu (3 out of 3 utilities done)
+Random Background (2 out of 3 done)
+V4.9.8(Beta):
+Updating current gihub repo
+
 

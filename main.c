@@ -526,7 +526,8 @@ int main(void) {
     }
       break;
     case 'Q': {
-      run = false;
+      run = true;
+      exit(0);
     }
       break;
     default: {
