@@ -10,17 +10,11 @@ from easypydb import DB
 from replit import audio
 import enquiries
 import turtle
-token = os.getenv("token","default")
+token = os.getenv("token")
 db1=DB("myBrawl",token)
-print("Welcome to Brawl Stars Utilities") 
+print("Welcome to Brawl Stars Utilities S") 
 time.sleep(0.0000000001)
-brawlLobby1 = random.randint(1,5)
-if brawlLobby1 == 1:
-    print("You got lobby 1")
-if brawlLobby1 == 2:
-    print("You got lobby 2")
-if brawlLobby1 ==3:
-    print("You got lobby 3")
+brawlLobby1 = input("Input the background number you would like:1/2/3:")
 mobileorpc = input('enter mobile or pc to perform optimisations for your device:')
 databaseuser = input("To skip the inputs, enter your username:")
 username =input("Enter your username:")
@@ -28,18 +22,14 @@ password = input("Enter bp to receive info based on the brawl pass or type anyth
 if password == 'bp':
     subprocess.run(["python","brawlpass.py"], check=True)
     exit()
-options = ['Chance Calculator', 'Brawl stats', 'Power point calculator','Settings']
+options = ['Chance Calculator', 'Brawl stats', 'Power point calculator']
 choice = enquiries.choose('Choose one of these options:', options)
 print(choice, "was selected")
 if choice == 'Brawl stats':
     subprocess.run(["python","brawlstats.py"],check=True)
 if choice == 'Power point calculator':
     import powerpointcalc
-    exit()
-if choice == 'Settings':
-    subprocess.run(["python","brawlsettings.py"], check=True)
-    exit()
-
+    exit() 
 print("Chances for all rarities can be seen when pressing the info icon on a big or mega box in the shop when tapping on a big or mega box in the shop.")
 legendaryChance = float(input("What is your legendary chance?"))
 rareChance = float(input("What is your rare chance?"))

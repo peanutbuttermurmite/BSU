@@ -1,0 +1,2 @@
+language = "tkinter"
+run = "pip3 install easypydb && pip3 install enquiries && pip3 install selenium && python main.py"
