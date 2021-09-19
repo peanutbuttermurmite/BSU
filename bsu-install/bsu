@@ -1,0 +1,34 @@
+#!/bin/bash
+if [ $# -ne 1 ]; then
+    echo $0: usage: bsu name
+    exit 1
+fi
+name=$1
+name2="--reinstall"
+name3="--uninstall"
+name4="--run"
+if [[ $name == $name2 ]]; then
+    unlink /usr/local/bin
+    rm -r /opt/BSU
+    echo "Stage 1 of 2 complete"
+    tput cup 1000 0 
+    echo "-----"
+    sudo apt-get install python3 python3-tk python3-pip -y
+    git clone https://github.com/peanutbuttermurmite/BSU.git
+    pip3 install enquiries selenium PySimpleGUI
+    mv BSU /opt
+    sudo ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
+    echo "Stage 2 of 2 complete"
+    echo "BSU has been reinstalled successfully"
+    exit 1
+fi
+if [[ $name == $name3 ]]; then
+   unlink /usr/local/bin/bsu
+   unlink /opt/BSU/bsu
+   rm -r /opt/BSU
+   echo "Removal Complete"
+fi
+if [[ $name == $name4 ]]; then
+   cd /opt/BSU
+   python3 main.py
+fi
