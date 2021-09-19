@@ -10,7 +10,7 @@ git clone https://github.com/peanutbuttermurmite/BSU.git
 
 cd BSU/bsu-install
 
-bash bsuinstaller.sh
+ sudo bash bsuinstaller.sh
 
 Current Features:
 Power Point calculator with save and load system-credit to andersonjwan for this
