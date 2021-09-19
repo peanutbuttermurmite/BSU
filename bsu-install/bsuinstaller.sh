@@ -3,7 +3,7 @@ echo "---> Installing Packages"
 sudo apt-get install python3 python3-tk python3-pip -y
 echo "---> Downloading BSU + Python dependencies"
 git clone https://github.com/peanutbuttermurmite/BSU.git
-pip3 install enquiries selenium PySimpleGUI replit
+pip3 install enquiries selenium PySimpleGUI 
 cd BSU/bsu-install
 chmod a+x bsu
 cd ..
