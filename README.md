@@ -1,5 +1,16 @@
 # brawlstarsutils
 A combination of brawl stars utilities
+
+Dependencies:git,bash(all other dependencies handled by installer)
+
+INSTALL:
+
+git clone https://github.com/peanutbuttermurmite/BSU.git
+
+cd bsu-install
+
+bash bsuinstaller.sh
+
 Current Features:
 Power Point calculator with save and load system-credit to andersonjwan for this
 Chance calculator for all rarities except chromatic- made by me.
