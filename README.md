@@ -2,12 +2,13 @@
 A combination of brawl stars utilities
 
 Dependencies:git,bash(all other dependencies handled by installer)
+Installer currently only supports Debian/Ubuntu-based distributions of linux.
 
 INSTALL:
 
 git clone https://github.com/peanutbuttermurmite/BSU.git
 
-cd bsu-install
+cd BSU/bsu-install
 
 bash bsuinstaller.sh
 
@@ -15,13 +16,11 @@ Current Features:
 Power Point calculator with save and load system-credit to andersonjwan for this
 Chance calculator for all rarities except chromatic- made by me.
 Upcoming Features:
-1.Installer
-2.Tutorial
+1.Tutorial
 
 Notes:
-For now Android users will have to use this repl for the utilities.
-Patches tend to take around a week to create due to time constraints-sometimes more.
-Planning to update BSU on GitHub with these new files.
+iOS + Android support deprecated
+Use apps like userland for android or SSH into a Debian/Ubuntu linux machine.
 
 Changelog:
 
