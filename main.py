@@ -10,7 +10,6 @@ from PIL import Image, ImageTk
 from replit import audio
 import enquiries
 import turtle
-from goto import goto 
 typer.out("Welcome to Brawl Stars Utilities\n")
 time.sleep(0.0000000001)
 brawlLobby1 = random.randint(1, 5)
