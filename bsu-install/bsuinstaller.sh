@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "---> Installing Packages"
 echo -ne '>>>>>>>>                       [25%]\r'
-sudo apt-get install python3 python3-tk python3-pip -y
+sudo apt-get install python3 python3-tk python3-pip python3-pil python3-pil.imagetk
 echo "---> Downloading BSU + Python dependencies"
 git clone https://github.com/peanutbuttermurmite/BSU.git
 pip3 install enquiries selenium PySimpleGUI
