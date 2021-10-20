@@ -4,7 +4,7 @@ A combination of brawl stars utilities
 Dependencies:git,bash(all other dependencies handled by installer)
 Installer currently only supports Debian/Ubuntu-based distributions of linux.
 
-INSTALL:
+INSTALL:(option 1)
 
 git clone https://github.com/peanutbuttermurmite/BSU.git
 
