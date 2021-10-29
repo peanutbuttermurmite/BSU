@@ -1,10 +1,10 @@
-# brawlstarsutils
+# BSU
 A combination of brawl stars utilities
 
 Dependencies:git,bash(all other dependencies handled by installer)
 Installer currently only supports Debian/Ubuntu-based distributions of linux.
 
-INSTALL:(option 1)
+INSTALL:
 
 git clone https://github.com/peanutbuttermurmite/BSU.git
 
@@ -12,6 +12,8 @@ cd BSU/bsu-install
 
  sudo bash bsuinstaller.sh
 
+OR
+Download the latest GitHub Release binary for your linux distro.
 Current Features:
 Power Point calculator with save and load system-credit to andersonjwan for this
 Chance calculator for all rarities except chromatic- made by me.
