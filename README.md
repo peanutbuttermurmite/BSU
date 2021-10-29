@@ -69,8 +69,41 @@ V5(Pre-Release 1):
 
 Database replacement with save and load file system.(Completed)
 GitHub update in progress
-
-
+V5.2.0:
+Added many features including an installation script compatible with Debian/Ubuntu
+Squashed many bugs
+Created .deb Release
+Progress bar added to installation script
+V5.3.0:
+Created wiki
+Fixed the save and load file system 
+Added adder.py, a tool to integrate the data from powerpointcalc with the save file.
+V5.4.0:
+GitHub Update :
+ \ Update README.md
+ \ Add V5.3.0 update to GitHub
+Upcoming features:
+V5.5.0:
+Begin to create pages on the wiki
+Create informative pages on github.io website
+V5.6.0:
+Update Installation script with support for distributions such as Fedora and CentOS.
+V5.7.0:
+Add .rpm binary and support for other distribution binaries
+V5.8.0:
+Installation script updated with GUI progress bar and general GUI
+V5.9.0:
+Completed wiki and squashing remaining bugs.
+V6.0.0:
+Upload to PyPi
+Updated .deb, .rpm and other binaries.
+GUI Integration with every script except powerpointcalc:
+V6.1.0:
+GUI support for main.py
+V6.2.0:
+GUI support for bash scripts
+V6.3.0:
+GUI support for brawl stats
 
 
 
