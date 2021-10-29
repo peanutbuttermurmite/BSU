@@ -129,12 +129,23 @@ Upload to PyPi
 Updated .deb, .rpm and other binaries.
 
 GUI Integration with every script except powerpointcalc(implemented in future updates)
+
 V6.1.0:
+
 GUI support for main.py
+
 V6.2.0:
+
 GUI support for bash scripts
+
 V6.3.0:
+
 GUI support for brawl stats
 
+V6.4.0:
 
+Brawl Stats rework (BrawlStats V2)
 
+V6.5.0:
+
+Upload to Replit Apps
