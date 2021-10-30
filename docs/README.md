@@ -1,8 +1,4 @@
 # BSU
----
-layout: post
-title: Install/Changelog
----
 A combination of brawl stars utilities
 
 Dependencies:git,bash(all other dependencies handled by installer)
