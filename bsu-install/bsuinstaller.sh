@@ -1,7 +1,8 @@
 #!/bin/bash
 printf -- "---> Installing Packages"
 echo -ne '>>>>>>>>                       [25%]\r'
-sudo apt-get install python3 python3-tk python3-pip python3-pil python3-pil.imagetk
+sudo apt install python3 python3-tk python3-pip python3-pil python3-pil.imagetk yad -y > /dev/null 
+yad --progress --pulse
 printf -- "---> Downloading BSU + Python dependencies"
 git clone https://github.com/peanutbuttermurmite/BSU.git
 pip3 install enquiries selenium PySimpleGUI
@@ -18,3 +19,4 @@ sudo cp -r bsu.desktop ~/.local/share/applications
 echo -ne '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\r'
 printf -- "Installed Successfully"
 printf -- "Run BSU by typing "bsu --run" into your terminal or use the .desktop file"
+printf -- "Use bsu --help to show all commands (WARNING:use sudo before commands)"
