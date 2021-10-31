@@ -26,7 +26,7 @@ fi
 if [[ $name == $name3 ]]; then
    unlink /usr/local/bin/bsu
    unlink /opt/BSU/bsu
-   rm -r /opt/BSU
+   rm -rf /opt/BSU
    echo "Removal Complete"
 fi
 if [[ $name == $name4 ]]; then
