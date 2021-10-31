@@ -1,5 +1,21 @@
 #!/bin/bash
-sudo apt install python3 python3-tk python3-pip python3-pil python3-pil.imagetk yad -y > /dev/null 
+declare -A osInfo;
+osInfo[/etc/debian_version]="apt install -y"
+osInfo[/etc/alpine-release]="apk --update add"
+osInfo[/etc/centos-release]="yum install -y"
+osInfo[/etc/fedora-release]="dnf install -y"
+for f in ${!osInfo[@]}
+do
+    if [[ -f $f ]];then
+        package_manager=${osInfo[$f]}
+    fi
+done
+package1="python3 > /dev/null"
+package2="python3-tk > /dev/null"
+package3="yad > /dev/null"
+package4="python3-pip > /dev/null"
+package5="python3-pil > /dev/null"
+package6="python3-pil.imagetk > /dev/null"
 yad --progress \
   --title="Dependency Install" \
   --text="All dependencies installed" \
