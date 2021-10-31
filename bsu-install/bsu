@@ -10,7 +10,7 @@ name4="--run"
 name5="--help"
 if [[ $name == $name2 ]]; then
     unlink /usr/local/bin
-    rm -r /opt/BSU
+    rm -rf /opt/BSU
     echo "Stage 1 of 2 complete"
     tput cup 1000 0 
     echo "-----"
