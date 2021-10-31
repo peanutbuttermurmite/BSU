@@ -27,6 +27,7 @@ if [[ $name == $name3 ]]; then
    rm -rf /usr/local/bin/bsu > /dev/null
    rm -rf /opt/BSU > /dev/null
    rm -f ~/.local/share/applications/bsu.desktop > /dev/null
+   rm -rf BSU > /dev/null
    echo "Removal Complete"
 fi
 if [[ $name == $name4 ]]; then
