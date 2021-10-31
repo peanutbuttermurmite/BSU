@@ -1,6 +1,4 @@
 #!/bin/bash
-sudo ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
-sudo cp -r bsu.desktop ~/.local/share
 sudo apt install python3 python3-tk python3-pip python3-pil python3-pil.imagetk yad -y > /dev/null 
 yad --progress \
   --title="Dependency Install" \
@@ -18,9 +16,11 @@ cd BSU/bsu-install
 chmod ugo+rwx bsu
 cd ..
 cd ..
-sudo mv BSU /opt/applications
+sudo mv BSU /opt
+sudo ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
+sudo cp -r bsu.desktop ~/.local/share
 yad --progress \
-  --title="BSU has no been set up" \
+  --title="BSU has been set up" \
   --text="Installation Complete" \
   --percentage=100
   --autoclose
