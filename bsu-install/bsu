@@ -9,14 +9,13 @@ name3="--uninstall"
 name4="--run"
 name5="--help"
 if [[ $name == $name2 ]]; then
-    unlink /usr/local/bin
-    rm -rf /opt/BSU
+    rm -rf /usr/local/bin/bsu > /dev/null
+    rm -rf /opt/BSU > /dev/null
+    rm -f ~/.local/share/applications/bsu.desktop > /dev/null
     echo "Stage 1 of 2 complete"
     tput cup 1000 0 
     echo "-----"
-    sudo apt-get install python3 python3-tk python3-pip -y
-    git clone https://github.com/peanutbuttermurmite/BSU.git
-    pip3 install enquiries selenium PySimpleGUI
+    git clone https://github.com/peanutbuttermurmite/BSU.git > /dev/null
     mv BSU /opt
     sudo ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
     echo "Stage 2 of 2 complete"
@@ -24,9 +23,9 @@ if [[ $name == $name2 ]]; then
     exit 1
 fi
 if [[ $name == $name3 ]]; then
-   unlink /usr/local/bin/bsu
-   unlink /opt/BSU/bsu
-   rm -rf /opt/BSU
+   rm -rf /usr/local/bin/bsu > /dev/null
+   rm -rf /opt/BSU > /dev/null
+   rm -f ~/.local/share/applications/bsu.desktop > /dev/null
    echo "Removal Complete"
 fi
 if [[ $name == $name4 ]]; then
