@@ -12,6 +12,7 @@ if [[ $name == $name2 ]]; then
     rm -rf /usr/local/bin/bsu > /dev/null
     rm -rf /opt/BSU > /dev/null
     rm -f ~/.local/share/applications/bsu.desktop > /dev/null
+    rm -r BSU > /dev/null
     echo "Stage 1 of 2 complete"
     tput cup 1000 0 
     echo "-----"
