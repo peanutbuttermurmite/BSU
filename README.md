@@ -18,7 +18,7 @@ OR
 
 Method 2(Updated less often but the repository is included)
 
-Download the .run file
+Download the .run file from GitHub Releases
 
 chmod a+x *.run
 
