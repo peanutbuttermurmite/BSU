@@ -6,6 +6,8 @@ Installer currently only supports Debian/Ubuntu-based distributions of linux.
 
 INSTALL:
 
+Method 1(Updated most frequently but requires cloning the repository)
+
 git clone https://github.com/peanutbuttermurmite/BSU.git
 
 cd BSU/bsu-install
@@ -13,6 +15,8 @@ cd BSU/bsu-install
  sudo bash bsuinstaller.sh
 
 OR
+
+Method 2(Updated less often but the repository is included)
 
 Download the .run file
 
