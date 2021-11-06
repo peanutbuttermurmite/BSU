@@ -13,7 +13,13 @@ cd BSU/bsu-install
  sudo bash bsuinstaller.sh
 
 OR
-Download the latest GitHub Release binary for your linux distro.
+
+Download the .run file
+
+chmod a+x *.run
+
+./*.run
+
 Current Features:
 Power Point calculator with save and load system-credit to andersonjwan for this
 Chance calculator for all rarities except chromatic- made by me.
