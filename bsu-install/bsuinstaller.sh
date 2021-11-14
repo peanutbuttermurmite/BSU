@@ -16,6 +16,12 @@ package3="yad > /dev/null"
 package4="python3-pip > /dev/null"
 package5="python3-pil > /dev/null"
 package6="python3-pil.imagetk > /dev/null"
+${package_manager} ${package1}
+${package_manager} ${package2}
+${package_manager} ${package3}
+${package_manager} ${package4}
+${package_manager} ${package5}
+${package_manager} ${package6}
 yad --progress \
   --title="Dependency Install" \
   --text="All dependencies installed" \
