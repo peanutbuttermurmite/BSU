@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ "$(id -u)" -ne 0 ]; then
+	echo "run this script as root" >&2
+	exit 1
+fi
 if [ $# -ne 1 ]; then
     echo $0: usage: bsu name
     exit 1
@@ -18,7 +22,7 @@ if [[ $name == $name2 ]]; then
     echo "-----"
     git clone https://github.com/peanutbuttermurmite/BSU.git > /dev/null
     mv BSU /opt
-    sudo ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
+    ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
     echo "Stage 2 of 2 complete"
     echo "BSU has been reinstalled successfully"
     exit 1
