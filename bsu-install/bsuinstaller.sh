@@ -29,15 +29,18 @@ ${package_manager} ${package6} >/dev/null
 yad --progress \
   --title="Dependency Install" \
   --text="All dependencies installed" \
-  --percentage=33
-  --autoclose
+  --pulsate \
+  --percentage=33 \
+  --auto-close
+ 
 git clone https://github.com/peanutbuttermurmite/BSU.git
 pip3 install enquiries selenium PySimpleGUI
 yad --progress \
   --title="Python packages " \
   --text="Setting up..." \
-  --percentage=66
-  --autoclose
+  --pulsate \
+  --percentage=66 \
+  --auto-close
 cd BSU/bsu-install
 chmod ugo+rwx bsu
 cd ..
@@ -48,6 +51,7 @@ cp -r bsu.desktop ~/.local/share
 yad --progress \
   --title="BSU has been set up" \
   --text="Installation Complete" \
-  --percentage=100
-  --autoclose
+  --pulsate \
+  --percentage=100 \
+  --auto-close
 yad --text "Run BSU by typing "bsu --run" into your terminal or use the .desktop file.Use bsu --help to show all commands (WARNING:Use root for all commands)"
