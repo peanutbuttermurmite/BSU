@@ -14,18 +14,18 @@ do
         package_manager=${osInfo[$f]}
     fi
 done
-package1="python3 > /dev/null"
-package2="python3-tk > /dev/null"
-package3="yad > /dev/null"
-package4="python3-pip > /dev/null"
-package5="python3-pil > /dev/null"
-package6="python3-pil.imagetk > /dev/null"
-${package_manager} ${package1}
-${package_manager} ${package2}
-${package_manager} ${package3}
-${package_manager} ${package4}
-${package_manager} ${package5}
-${package_manager} ${package6}
+package1="python3"
+package2="python3-tk"
+package3="yad"
+package4="python3-pip"
+package5="python3-pil"
+package6="python3-pil.imagetk"
+${package_manager} ${package1} >/dev/null
+${package_manager} ${package2} >/dev/null
+${package_manager} ${package3} >/dev/null
+${package_manager} ${package4} >/dev/null
+${package_manager} ${package5} >/dev/null
+${package_manager} ${package6} >/dev/null
 yad --progress \
   --title="Dependency Install" \
   --text="All dependencies installed" \
