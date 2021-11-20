@@ -10,26 +10,29 @@ name4="--run"
 name5="--help"
 if [[ $name == $name2 ]]; then
     if [ "$(id -u)" -ne 0 ]; then
-	echo "run this script as root" >&2
+	echo "Run this script as root" >&2
 	exit 1
     fi
+    rm -f /usr/local/bin/bsu /opt/BSU/bsu-install/bsu
     rm -rf /usr/local/bin/bsu > /dev/null
     rm -rf /opt/BSU > /dev/null
     rm -f ~/.local/share/applications/bsu.desktop > /dev/null
-    rm -r BSU > /dev/null
-    echo "Stage 1 of 2 complete"
-    tput cup 1000 0 
-    echo "-----"
-    git clone https://github.com/peanutbuttermurmite/BSU.git > /dev/null
+    rm -rf BSU > /dev/null
+    yad --text "Removal Complete"
+    git clone https://github.com/peanutbuttermurmite/BSU.git
+    cd BSU/bsu-install
+    chmod ugo+rwx bsu
+    cd ..
+    cd ..
     mv BSU /opt
     ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
-    echo "Stage 2 of 2 complete"
-    echo "BSU has been reinstalled successfully"
+    cp -r bsu.desktop ~/.local/share
+    yad --text "BSU has been successfully reinstalled"
     exit 1
 fi
 if [[ $name == $name3 ]]; then
    if [ "$(id -u)" -ne 0 ]; then
-	echo "run this script as root" >&2
+	echo "Run this script as root" >&2
 	exit 1
    fi
    rm -rf /usr/local/bin/bsu > /dev/null
@@ -40,7 +43,7 @@ if [[ $name == $name3 ]]; then
 fi
 if [[ $name == $name4 ]]; then
    if [ "$(id -u)" -ne 0 ]; then
-	echo "run this script as root" >&2
+	echo "Run this script as root" >&2
 	exit 1
    fi
    cd /opt/BSU
