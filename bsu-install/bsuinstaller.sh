@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ "$(id -u)" -ne 0 ]; then
+	echo "run this script as root" >&2
+	exit 1
+fi
 declare -A osInfo;
 osInfo[/etc/debian_version]="apt install -y"
 osInfo[/etc/alpine-release]="apk --update add"
@@ -38,12 +42,12 @@ cd BSU/bsu-install
 chmod ugo+rwx bsu
 cd ..
 cd ..
-sudo mv BSU /opt
-sudo ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
-sudo cp -r bsu.desktop ~/.local/share
+mv BSU /opt
+ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
+cp -r bsu.desktop ~/.local/share
 yad --progress \
   --title="BSU has been set up" \
   --text="Installation Complete" \
   --percentage=100
   --autoclose
-yad --text "Run BSU by typing "bsu --run" into your terminal or use the .desktop file.Use bsu --help to show all commands (WARNING:use sudo before commands)"
+yad --text "Run BSU by typing "bsu --run" into your terminal or use the .desktop file.Use bsu --help to show all commands (WARNING:Use root for all commands)"
