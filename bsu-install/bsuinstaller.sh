@@ -14,12 +14,6 @@ do
         package_manager=${osInfo[$f]}
     fi
 done
-package1="python3"
-package2="python3-tk"
-package3="yad"
-package4="python3-pip"
-package5="python3-pil"
-package6="python3-pil.imagetk"
 PKGS=(
 'python3'
 'python3-tk'
@@ -28,9 +22,12 @@ PKGS=(
 'python3-pil'
 'python3-pil.imagetk'
 )
+space=" "
+
 for PKG in "${PKGS[@]}"; do
     echo "INSTALLING: ${PKG}"
-    "$package_manager" "$PKG"
+    VAR3="$package_manager$space$PKG"
+    $VAR3
 done
 yad --progress \
   --title="Dependency Install" \
