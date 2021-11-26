@@ -20,12 +20,18 @@ package3="yad"
 package4="python3-pip"
 package5="python3-pil"
 package6="python3-pil.imagetk"
-${package_manager} ${package1} >/dev/null
-${package_manager} ${package2} >/dev/null
-${package_manager} ${package3} >/dev/null
-${package_manager} ${package4} >/dev/null
-${package_manager} ${package5} >/dev/null
-${package_manager} ${package6} >/dev/null
+PKGS=(
+'python3'
+'python3-tk'
+'yad'
+'python3-pip'
+'python3-pil'
+'python3-pil.imagetk'
+)
+for PKG in "${PKGS[@]}"; do
+    echo "INSTALLING: ${PKG}"
+    "$package_manager" "$PKG"
+done
 yad --progress \
   --title="Dependency Install" \
   --text="All dependencies installed" \
