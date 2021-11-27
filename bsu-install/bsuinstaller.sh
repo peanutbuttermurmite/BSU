@@ -17,7 +17,7 @@ done
 space=" "
 yad="yad"
 installyad=$package_manager$space$yad
-
+$installyad
 (
 # =================================================================
 echo "# Installing dependencies" ; sleep 2
