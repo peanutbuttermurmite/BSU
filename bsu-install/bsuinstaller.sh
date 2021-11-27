@@ -50,10 +50,10 @@ done
 # =================================================================
 echo "66"
 echo "# Setting Up..." ; sleep 2
-(cd .. || exit) 
-(cd ..)
-(git pull || exit)
-(cd BSU/bsu-install || exit)
+cd .. 
+cd ..
+git pull
+cd BSU/bsu-install
 chmod ugo+rwx bsu 
 
 mv BSU /opt
