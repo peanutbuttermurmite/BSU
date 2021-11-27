@@ -69,7 +69,9 @@ yad --progress \
   --percentage=0 \
   --auto-close \
   --auto-kill
-
-(( $? != 0 )) && zenity --error --text="Error in zenity command."
+if [ "$?" = -1 ] ; then
+        yad --error \
+          --text="BSU install canceled."
+fi
 
 yad --text "Run BSU by typing "bsu --run" into your terminal or use the .desktop file.Use bsu --help to show all commands (WARNING:Use root for all commands)"
