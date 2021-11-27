@@ -8,7 +8,7 @@ osInfo[/etc/debian_version]="apt install -y"
 osInfo[/etc/alpine-release]="apk --update add"
 osInfo[/etc/centos-release]="yum install -y"
 osInfo[/etc/fedora-release]="dnf install -y"
-for f in ${!osInfo[@]}
+for f in "${!osInfo[@]}"
 do
     if [[ -f $f ]];then
         package_manager=${osInfo[$f]}
@@ -44,10 +44,10 @@ yad --progress \
   --pulsate \
   --percentage=66 \
   --auto-close
-cd BSU/bsu-install
-chmod ugo+rwx bsu
-cd ..
-cd ..
+(cd BSU/bsu-install || exit)
+chmod ugo+rwx bsu 
+(cd ..) 
+(cd ..)
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
 cp -r bsu.desktop ~/.local/share
