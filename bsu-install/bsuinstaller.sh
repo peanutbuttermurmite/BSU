@@ -36,7 +36,8 @@ yad --progress \
   --percentage=33 \
   --auto-close
  
-git clone https://github.com/peanutbuttermurmite/BSU.git
+(cd ..)
+git pull
 pip3 install enquiries selenium PySimpleGUI
 yad --progress \
   --title="Python packages " \
