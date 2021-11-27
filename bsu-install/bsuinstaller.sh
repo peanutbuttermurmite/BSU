@@ -35,7 +35,7 @@ for PKG in "${PKGS[@]}"; do
 done
 # =================================================================
 echo "33"
-echo "# Running Second Task." ; sleep 2
+echo "# Installing python packages" ; sleep 2
 pip="pip3 install"
 PYTHONDEPS=(
 'enquiries'
