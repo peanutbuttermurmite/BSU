@@ -14,7 +14,7 @@ do
         package_manager=${osInfo[$f]}
     fi
 done
-cleanoutput=>/dev/null
+cleanoutput=">/dev/null"
 PKGS=(
 'python3'
 'python3-tk'
@@ -37,8 +37,18 @@ yad --progress \
   --percentage=33 \
   --auto-close
  
-git clone https://github.com/peanutbuttermurmite/BSU.git
-pip3 install enquiries selenium PySimpleGUI
+git pull
+pip="pip3 install"
+PYTHONDEPS=(
+'enquiries'
+'selenium'
+'PySimpleGUI'
+)
+for PYTHONDEP in "${PYTHONDEPS[@]}"; do
+    echo "INSTALLING: ${PYTHONDEP}"
+    VAR4="$pip$space$PYTHONDEP$space$cleanoutput"
+    $VAR4
+done
 yad --progress \
   --title="Python packages " \
   --text="Setting up..." \
