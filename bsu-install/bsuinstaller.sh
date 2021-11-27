@@ -8,24 +8,27 @@ osInfo[/etc/debian_version]="apt install -y"
 osInfo[/etc/alpine-release]="apk --update add"
 osInfo[/etc/centos-release]="yum install -y"
 osInfo[/etc/fedora-release]="dnf install -y"
-for f in ${!osInfo[@]}
+for f in "${!osInfo[@]}"
 do
     if [[ -f $f ]];then
         package_manager=${osInfo[$f]}
     fi
 done
-package1="python3"
-package2="python3-tk"
-package3="yad"
-package4="python3-pip"
-package5="python3-pil"
-package6="python3-pil.imagetk"
-${package_manager} ${package1} >/dev/null
-${package_manager} ${package2} >/dev/null
-${package_manager} ${package3} >/dev/null
-${package_manager} ${package4} >/dev/null
-${package_manager} ${package5} >/dev/null
-${package_manager} ${package6} >/dev/null
+PKGS=(
+'python3'
+'python3-tk'
+'yad'
+'python3-pip'
+'python3-pil'
+'python3-pil.imagetk'
+)
+space=" "
+
+for PKG in "${PKGS[@]}"; do
+    echo "INSTALLING: ${PKG}"
+    VAR3="$package_manager$space$PKG"
+    $VAR3
+done
 yad --progress \
   --title="Dependency Install" \
   --text="All dependencies installed" \
@@ -41,10 +44,10 @@ yad --progress \
   --pulsate \
   --percentage=66 \
   --auto-close
-cd BSU/bsu-install
-chmod ugo+rwx bsu
-cd ..
-cd ..
+(cd BSU/bsu-install || exit)
+chmod ugo+rwx bsu 
+(cd ..) 
+(cd ..)
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
 cp -r bsu.desktop ~/.local/share
