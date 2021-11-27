@@ -14,6 +14,10 @@ do
         package_manager=${osInfo[$f]}
     fi
 done
+space=" "
+yad="yad"
+installyad=$package_manager$space$yad
+
 (
 # =================================================================
 echo "# Installing dependencies" ; sleep 2
@@ -21,12 +25,10 @@ cleanoutput=">/dev/null"
 PKGS=(
 'python3'
 'python3-tk'
-'yad'
 'python3-pip'
 'python3-pil'
 'python3-pil.imagetk'
 )
-space=" "
 
 for PKG in "${PKGS[@]}"; do
     echo "INSTALLING: ${PKG}"
