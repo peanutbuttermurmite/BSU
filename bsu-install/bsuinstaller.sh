@@ -70,8 +70,9 @@ yad --progress \
   --auto-close \
   --auto-kill
 if [ "$?" = -1 ] ; then
-        yad --error \
+        yad --error \.
           --text="BSU install canceled."
+	  exit 0
 fi
 
 yad --text "Run BSU by typing "bsu --run" into your terminal or use the .desktop file.Use bsu --help to show all commands (WARNING:Use root for all commands)"
