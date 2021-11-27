@@ -14,6 +14,7 @@ do
         package_manager=${osInfo[$f]}
     fi
 done
+cleanoutput=>/dev/null
 PKGS=(
 'python3'
 'python3-tk'
@@ -26,7 +27,7 @@ space=" "
 
 for PKG in "${PKGS[@]}"; do
     echo "INSTALLING: ${PKG}"
-    VAR3="$package_manager$space$PKG"
+    VAR3="$package_manager$space$PKG$space$cleanoutput"
     $VAR3
 done
 yad --progress \
