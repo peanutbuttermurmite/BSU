@@ -14,6 +14,9 @@ do
         package_manager=${osInfo[$f]}
     fi
 done
+(
+# =================================================================
+echo "# Installing dependencies" ; sleep 2
 cleanoutput=">/dev/null"
 PKGS=(
 'python3'
@@ -30,14 +33,9 @@ for PKG in "${PKGS[@]}"; do
     VAR3="$package_manager$space$PKG$space$cleanoutput"
     $VAR3
 done
-yad --progress \
-  --title="Dependency Install" \
-  --text="All dependencies installed" \
-  --pulsate \
-  --percentage=33 \
-  --auto-close
- 
-git pull
+# =================================================================
+echo "33"
+echo "# Running Second Task." ; sleep 2
 pip="pip3 install"
 PYTHONDEPS=(
 'enquiries'
@@ -49,23 +47,29 @@ for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     VAR4="$pip$space$PYTHONDEP$space$cleanoutput"
     $VAR4
 done
-yad --progress \
-  --title="Python packages " \
-  --text="Setting up..." \
-  --pulsate \
-  --percentage=66 \
-  --auto-close
+# =================================================================
+echo "66"
+echo "# Setting Up..." ; sleep 2
+(cd .. || exit) 
+(cd ..)
+(git pull || exit)
 (cd BSU/bsu-install || exit)
 chmod ugo+rwx bsu 
-(cd ..) 
-(cd ..)
+
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
 cp -r bsu.desktop ~/.local/share
+# =================================================================
+echo "# All finished." ; sleep 2
+echo "100"
+) |
 yad --progress \
-  --title="BSU has been set up" \
-  --text="Installation Complete" \
-  --pulsate \
-  --percentage=100 \
-  --auto-close
+  --title="BSU Installer" \
+  --text="Installing BSU" \
+  --percentage=0 \
+  --auto-close \
+  --auto-kill
+
+(( $? != 0 )) && zenity --error --text="Error in zenity command."
+
 yad --text "Run BSU by typing "bsu --run" into your terminal or use the .desktop file.Use bsu --help to show all commands (WARNING:Use root for all commands)"
