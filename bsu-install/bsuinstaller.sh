@@ -53,8 +53,8 @@ done
 echo "66"
 echo "# Setting Up..." ; sleep 2
 cd .. 
-cd ..
 git pull
+cd ..
 cd BSU/bsu-install
 chmod ugo+rwx bsu 
 cd .. 
