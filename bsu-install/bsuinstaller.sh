@@ -70,7 +70,7 @@ yad --progress \
   --auto-close \
   --auto-kill
 if [ "$?" = -1 ] ; then
-        yad --error \.
+        yad --error \
           --text="BSU install canceled."
 	  exit 0
 fi
