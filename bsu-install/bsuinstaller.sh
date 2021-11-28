@@ -7,6 +7,8 @@ if ! command -v awk &> /dev/null
 then
     exit 1
 fi
+
+os=awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'
 declare -A osInfo;
 osInfo[/etc/debian_version]="apt install -y"
 osInfo[/etc/alpine-release]="apk --update add"
@@ -18,6 +20,17 @@ do
         package_manager=${osInfo[$f]}
     fi
 done
+ubu="ubuntu"
+suse="opensuse"
+alpine2="alpine"
+centos="centos"
+fedora="fedora"
+deb="debian"
+pacman="arch"
+
+if (( $os==$ubu ))
+then
+    package_manager="apt install -y"
 space=" "
 yad="yad"
 installyad=$package_manager$space$yad
