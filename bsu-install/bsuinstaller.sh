@@ -4,6 +4,7 @@ if [ "$(id -u)" -ne 0 ]; then
 	exit 1
 fi
 if ! command -v awk &> /dev/null
+then
     exit 1
 fi
 declare -A osInfo;
@@ -55,13 +56,13 @@ done
 # =================================================================
 echo "66"
 echo "# Setting Up..." ; sleep 2
-cd .. 
+cd .. || exit
 git pull
-cd ..
-cd BSU/bsu-install
+cd .. || exit
+cd BSU/bsu-install || exit
 chmod ugo+rwx bsu 
-cd .. 
-cd ..
+cd .. || exit
+cd .. || exit
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
 cp -r bsu.desktop ~/.local/share
