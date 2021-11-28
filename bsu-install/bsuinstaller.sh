@@ -9,28 +9,42 @@ then
 fi
 
 os=awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'
-declare -A osInfo;
-osInfo[/etc/debian_version]="apt install -y"
-osInfo[/etc/alpine-release]="apk --update add"
-osInfo[/etc/centos-release]="yum install -y"
-osInfo[/etc/fedora-release]="dnf install -y"
-for f in "${!osInfo[@]}"
-do
-    if [[ -f $f ]];then
-        package_manager=${osInfo[$f]}
-    fi
-done
 ubu="ubuntu"
 suse="opensuse"
 alpine2="alpine"
-centos="centos"
-fedora="fedora"
+cent="centos"
+redhat="fedora"
 deb="debian"
 pacman="arch"
 
-if (( $os==$ubu ))
+if (( $os==$ubu )) 
 then
     package_manager="apt install -y"
+fi 
+if (( $os==$suse ))
+then 
+    package_manager="zypper install -y"
+fi
+if (( $os==$alpine2 ))
+then 
+    package_manager="apk --update add"
+fi
+if (( $os==$cent ))
+then 
+    package_manager="yum install -y"
+fi
+if (( $os==$redhat ))
+then 
+    package_manager="dnf install -y"
+fi
+if (( $os==$deb ))
+then 
+    package_manager="apt install -y"
+fi
+if (( $os==$pacman ))
+then
+    package_manager="pacman -Sy"
+fi
 space=" "
 yad="yad"
 installyad=$package_manager$space$yad
