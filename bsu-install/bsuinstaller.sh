@@ -3,6 +3,9 @@ if [ "$(id -u)" -ne 0 ]; then
 	echo "run this script as root" >&2
 	exit 1
 fi
+if ! [command -v awk &> /dev/null]; then
+    exit 1
+fi
 declare -A osInfo;
 osInfo[/etc/debian_version]="apt install -y"
 osInfo[/etc/alpine-release]="apk --update add"
