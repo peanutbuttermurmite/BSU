@@ -8,7 +8,7 @@ then
     exit 1
 fi
 
-os=awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'
+os=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
 ubu="ubuntu"
 suse="opensuse"
 alpine2="alpine"
