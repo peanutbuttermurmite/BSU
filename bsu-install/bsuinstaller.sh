@@ -3,40 +3,68 @@ if [ "$(id -u)" -ne 0 ]; then
 	echo "run this script as root" >&2
 	exit 1
 fi
-source /etc/os-release
-ubu="ubuntu"
-suse="opensuse"
-alpine2="alpine"
-cent="centos"
-redhat="fedora"
-deb="debian"
-pacman="arch"
+if [ -f /etc/os-release ]; then
+    # freedesktop.org and systemd
+    . /etc/os-release
+    OS=$NAME
+    VER=$VERSION_ID
+elif type lsb_release >/dev/null 2>&1; then
+    # linuxbase.org
+    OS=$(lsb_release -si)
+    VER=$(lsb_release -sr)
+elif [ -f /etc/lsb-release ]; then
+    # For some versions of Debian/Ubuntu without lsb_release command
+    . /etc/lsb-release
+    OS=$DISTRIB_ID
+    VER=$DISTRIB_RELEASE
+elif [ -f /etc/debian_version ]; then
+    # Older Debian/Ubuntu/etc.
+    OS=Debian
+    VER=$(cat /etc/debian_version)
+elif [ -f /etc/SuSe-release ]; then
+    # Older SuSE/etc.
+    ...
+elif [ -f /etc/redhat-release ]; then
+    # Older Red Hat, CentOS, etc.
+    ...
+else
+    # Fall back to uname, e.g. "Linux <version>", also works for BSD, etc.
+    OS=$(uname -s)
+    VER=$(uname -r)
+fi
+ubu="Ubuntu"
+suse="OpenSuse"
+alpine2="Alpine"
+cent="CentOS"
+redhat="Fedora"
+deb="Debian"
+pacman="Arch"
 
-if (( $ID==$ubu )) 
+if (( OS==ubu )) 
 then
     package_manager="apt install -y"
 fi 
-if (( $ID==$suse ))
+if (( OS==suse ))
 then 
     package_manager="zypper install -y"
 fi
-if (( $ID==$alpine2 ))
+if (( OS==alpine2 ))
 then 
     package_manager="apk --update add"
 fi
-if (( $ID==$cent ))
+if (( OS==cent ))
 then 
     package_manager="yum install -y"
 fi
-if (( $ID==$redhat ))
+if (( OS==redhat ))
 then 
     package_manager="dnf install -y"
 fi
-if (( $ID==$deb ))
+if (( OS==deb ))
 then 
     package_manager="apt install -y"
 fi
-if (( $ID==$pacman ))
+if (( OS==pacman ))
 then
     package_manager="pacman -Sy"
 fi
