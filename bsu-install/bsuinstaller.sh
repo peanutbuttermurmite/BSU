@@ -75,7 +75,7 @@ $installyad
 (
 # =================================================================
 echo "# Installing dependencies" ; sleep 2
-cleanoutput=">/dev/null"
+cleanoutput="> /dev/null 2> /dev/null"
 PKGS=(
 'python3'
 'python3-tk'
