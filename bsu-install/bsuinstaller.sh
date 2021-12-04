@@ -74,6 +74,9 @@ PYTHONDEPS=(
 'enquiries'
 'selenium'
 'PySimpleGUI'
+'pandas'
+'brawlstats'
+'pythondotenv'
 )
 for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     echo "INSTALLING: ${PYTHONDEP}"
@@ -93,6 +96,7 @@ cd .. || exit
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
 cp -r bsu.desktop ~/.local/share
+printf "cd /opt/BSU && git pull && cd ~" >> ~/.bashrc
 # =================================================================
 echo "# All finished." ; sleep 2
 echo "100"
