@@ -46,8 +46,8 @@ then
     package_manager="pacman -Sy"
 fi
 space=" "
-yad="yad"
-installyad=$package_manager$space$yad
+yadtext="yad"
+installyad=$package_manager$space$yadtext
 $installyad
 (
 # =================================================================
