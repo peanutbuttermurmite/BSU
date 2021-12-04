@@ -2,34 +2,7 @@
 A combination of brawl stars utilities
 
 Dependencies:git,bash(all other dependencies handled by installer)
-Installer currently only supports Debian/Ubuntu-based distributions of linux.
-
-INSTALL:
-
-Method 1(Updated most frequently but requires cloning the repository)
-
-git clone https://github.com/peanutbuttermurmite/BSU.git
-
-cd BSU/bsu-install
-
- sudo bash bsuinstaller.sh
-
-OR
-
-Method 2(Updated less often but the repository is included)
-
-Download the .run file from GitHub Releases
-
-chmod a+x *.run
-
-./*.run
-
-Current Features:
-Power Point calculator with save and load system-credit to andersonjwan for this
-Chance calculator for all rarities except chromatic- made by me.
-Upcoming Features:
-1.Tutorial
-
+Installer currently only supports a handful of distributions, scuh as Fedora, CentOS, Debian, Ubuntu and OpenSuse
 Notes:
 iOS + Android support deprecated
 Use apps like userland for android or SSH into a Debian/Ubuntu linux machine.
