@@ -3,12 +3,7 @@ if [ "$(id -u)" -ne 0 ]; then
 	echo "run this script as root" >&2
 	exit 1
 fi
-if ! command -v awk &> /dev/null
-then
-    exit 1
-fi
-
-os=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+source /etc/os-release
 ubu="ubuntu"
 suse="opensuse"
 alpine2="alpine"
@@ -17,31 +12,31 @@ redhat="fedora"
 deb="debian"
 pacman="arch"
 
-if (( $os==$ubu )) 
+if (( $ID==$ubu )) 
 then
     package_manager="apt install -y"
 fi 
-if (( $os==$suse ))
+if (( $ID==$suse ))
 then 
     package_manager="zypper install -y"
 fi
-if (( $os==$alpine2 ))
+if (( $ID==$alpine2 ))
 then 
     package_manager="apk --update add"
 fi
-if (( $os==$cent ))
+if (( $ID==$cent ))
 then 
     package_manager="yum install -y"
 fi
-if (( $os==$redhat ))
+if (( $ID==$redhat ))
 then 
     package_manager="dnf install -y"
 fi
-if (( $os==$deb ))
+if (( $ID==$deb ))
 then 
     package_manager="apt install -y"
 fi
-if (( $os==$pacman ))
+if (( $ID==$pacman ))
 then
     package_manager="pacman -Sy"
 fi
