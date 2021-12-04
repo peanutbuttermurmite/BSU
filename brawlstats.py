@@ -1,8 +1,10 @@
-from decouple import config
+import os
+from dotenv import load_dotenv
 import brawlstats as brawl
 import pandas as pd
 try:
-    TOKEN = config('TOKEN')
+    load_dotenv()
+    TOKEN = os.getenv("BRAWL_TOKEN")
     client = brawl.Client(TOKEN)
     player = client.get_player("2GGYGV8YQ")
     print("Connected successfully and returned player: ",player.name)
