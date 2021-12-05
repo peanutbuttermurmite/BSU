@@ -51,13 +51,13 @@ if (( OS==redhat ))
 then 
     package_manager="dnf install -y"
 fi
-if (( OS==deb ))
-then 
-    package_manager="apt install -y"
-fi
 if (( OS==pacman ))
 then
     package_manager="pacman -Sy"
+fi
+if (( OS==deb ))
+then 
+    package_manager="apt install -y"
 fi
 space=" "
 yadtext="yad"
