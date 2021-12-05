@@ -41,27 +41,27 @@ deb="Debian"
 pacman="Arch"
 if (( OS==suse ))
 then 
-    package_manager="zypper install -y"
+    export package_manager="zypper install -y"
 fi
 if (( OS==alpine2 ))
 then 
-    package_manager="apk --update add"
+    export package_manager="apk --update add"
 fi
 if (( OS==cent ))
 then 
-    package_manager="yum install -y"
+    export package_manager="yum install -y"
 fi
 if (( OS==redhat ))
 then 
-    package_manager="dnf install -y"
+    export package_manager="dnf install -y"
 fi
 if (( OS==pacman ))
 then
-    package_manager="pacman -Sy"
+    export package_manager="pacman -Sy"
 fi
 if (( OS==deb ))
 then 
-    package_manager="apt install -y"
+    export package_manager="apt install -y"
 fi
 space=" "
 yadtext="yad"
