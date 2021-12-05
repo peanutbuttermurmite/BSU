@@ -35,8 +35,6 @@ cent="CentOS"
 redhat="Fedora"
 deb="Debian"
 pacman="Arch"
-
-fi 
 if (( OS==suse ))
 then 
     package_manager="zypper install -y"
