@@ -42,28 +42,27 @@ pacman="Arch"
 if (( OS==suse ))
 then 
     export package_manager="zypper install -y"
-fi
-if (( OS==alpine2 ))
+elif (( OS==alpine2 ))
 then 
     export package_manager="apk --update add"
-fi
-if (( OS==cent ))
+elif (( OS==cent ))
 then 
     export package_manager="yum install -y"
-fi
-if (( OS==redhat ))
+elif (( OS==redhat ))
 then 
     export package_manager="dnf install -y"
-fi
-if (( OS==pacman ))
+elif (( OS==pacman ))
 then
     export package_manager="pacman -Sy"
-fi
-if (( OS==deb ))
+elif (( OS==deb ))
 then 
     export package_manager="apt install -y"
+else
+    printf "No package manager detected, aborting."
+    exit 1
 fi
 space=" "
+cleanoutput=" &>/dev/null"
 yadtext="yad"
 installyad=$package_manager$space$yadtext
 $installyad
@@ -80,7 +79,7 @@ PKGS=(
 
 for PKG in "${PKGS[@]}"; do
     echo "INSTALLING: ${PKG}"
-    VAR3="$package_manager$space$PKG$space> /dev/null 2> /dev/null"
+    VAR3="${package_manager}${space}${PKG}${cleanoutput}"
     $VAR3
 done
 # =================================================================
@@ -97,7 +96,7 @@ PYTHONDEPS=(
 )
 for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     echo "INSTALLING: ${PYTHONDEP}"
-    VAR4="$pip$space$PYTHONDEP$space> /dev/null 2> /dev/null"
+    VAR4="${pip}${space}${PYTHONDEP}${cleanoutput}"
     $VAR4
 done
 # =================================================================
