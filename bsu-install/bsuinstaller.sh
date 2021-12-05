@@ -32,6 +32,7 @@ fi
 if (( IS_UNKNOWN==1 ))
 then 
    printf "OS not found, install a supported package manager"
+fi
 suse="OpenSuse"
 alpine2="Alpine"
 cent="CentOS"
