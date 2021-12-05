@@ -57,7 +57,7 @@ then
 fi
 if (( OS==deb ))
 then 
-    package_manager="apt install -y"
+    package_manager="apt -q install -y"
 fi
 space=" "
 yadtext="yad"
@@ -66,7 +66,6 @@ $installyad
 (
 # =================================================================
 echo "# Installing dependencies" ; sleep 2
-cleanoutput="> /dev/null 2> /dev/null"
 PKGS=(
 'python3'
 'python3-tk'
@@ -77,7 +76,7 @@ PKGS=(
 
 for PKG in "${PKGS[@]}"; do
     echo "INSTALLING: ${PKG}"
-    VAR3="$package_manager$space$PKG$space$cleanoutput"
+    VAR3="$package_manager$space$PKG$space> /dev/null 2> /dev/null"
     $VAR3
 done
 # =================================================================
@@ -94,7 +93,7 @@ PYTHONDEPS=(
 )
 for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     echo "INSTALLING: ${PYTHONDEP}"
-    VAR4="$pip$space$PYTHONDEP$space$cleanoutput"
+    VAR4="$pip$space$PYTHONDEP$space> /dev/null 2> /dev/null"
     $VAR4
 done
 # =================================================================
