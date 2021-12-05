@@ -61,7 +61,7 @@ then
 fi
 if (( OS==deb ))
 then 
-    package_manager="apt -q install -y"
+    package_manager="{apt install -y}"
 fi
 space=" "
 yadtext="yad"
