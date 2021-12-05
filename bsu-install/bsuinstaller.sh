@@ -1,34 +1,37 @@
 #!/bin/bash
 if [ "$(id -u)" -ne 0 ]; then
-	echo "run this script as root" >&2
+	printf "Run this script as root" >&2
 	exit 1
 fi
 if ! command -v which &> /dev/null
 then
-    echo "Which could not be found"
+    printf "Dependency which could not be found"
     exit 1
 fi
 if ! command -v git &> /dev/null
 then
-    echo "Git could not be found"
+    echo "Dependency git could not be found"
     exit 1
 fi
-if [[ `which yum` ]]; then
+if [[ $(which yum) ]]; then
    OS="CentOS"
-elif [[ `which apt` ]]; then
+elif [[ $(which apt) ]]; then
    OS="Debian"
-elif [[ `which apk` ]]; then
+elif [[ $(which apk) ]]; then
    OS="Alpine"
-elif [[ `which zypper` ]]; then
+elif [[ $(which zypper) ]]; then
    OS="OpenSuse"
-elif [[ `which pacman` ]]; then
+elif [[ $(which pacman) ]]; then
    OS="Arch"
-elif [[ `which dnf` ]]; then
+elif [[ $(which dnf) ]]; then
    OS="Fedora"
 
 else
    IS_UNKNOWN=1
 fi
+if (( IS_UNKNOWN==1 ))
+then 
+   printf "OS not found, install a supported package manager"
 suse="OpenSuse"
 alpine2="Alpine"
 cent="CentOS"
