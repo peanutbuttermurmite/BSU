@@ -39,27 +39,27 @@ cent="CentOS"
 redhat="Fedora"
 deb="Debian"
 pacman="Arch"
-if [[ "$OS" == "suse" ]]
+if [[ "$OS" == "$suse" ]]
 then 
     export package_manager="zypper install -y"
 fi
-if [[ "$OS" == "alpine2" ]]
+if [[ "$OS" == "$alpine2" ]]
 then 
     export package_manager="apk --update add"
 fi
-if [[ "$OS" == "cent" ]]
+if [[ "$OS" == "$cent" ]]
 then 
     export package_manager="yum install -y"
 fi
-if [[ "$OS" == "redhat" ]]
+if [[ "$OS" == "$redhat" ]]
 then 
     export package_manager="dnf install -y"
 fi
-if [[ "$OS" == "pacman" ]]
+if [[ "$OS" == "$pacman" ]]
 then
     export package_manager="pacman -Sy"
 fi
-if [[ "$OS" == "deb" ]]
+if [[ "$OS" == "$deb" ]]
 then 
     export package_manager="apt install -y"
 fi
