@@ -83,7 +83,7 @@ PKGS=(
 )
 
 for PKG in "${PKGS[@]}"; do
-    yad --text --auto-close "INSTALLING: ${PKG}"
+    printf "INSTALLING: ${PKG}"
     VAR3="${package_manager}${space}${PKG}"
     $VAR3  > /dev/null 2>&1
 done
@@ -107,13 +107,13 @@ done
 # =================================================================
 echo "66"
 echo "# Setting Up..." ; sleep 2
-cd .. || exit
+cd .. 
 git pull
-cd .. || exit
-cd BSU/bsu-install || exit
+cd .. 
+cd BSU/bsu-install
 chmod ugo+rwx bsu 
-cd .. || exit
-cd .. || exit
+cd .. 
+cd ..
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
 cp -r bsu.desktop ~/.local/share
