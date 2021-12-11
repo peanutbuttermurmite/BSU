@@ -42,23 +42,28 @@ pacman="Arch"
 if [[ "$OS" == "suse" ]]
 then 
     export package_manager="zypper install -y"
-elif [[ "$OS" == "alpine2" ]]
+fi
+if [[ "$OS" == "alpine2" ]]
 then 
     export package_manager="apk --update add"
-elif [[ "$OS" == "cent" ]]
+fi
+if [[ "$OS" == "cent" ]]
 then 
     export package_manager="yum install -y"
-elif [[ "$OS" == "redhat" ]]
+fi
+if [[ "$OS" == "redhat" ]]
 then 
     export package_manager="dnf install -y"
-elif [[ "$OS" == "pacman" ]]
+fi
+if [[ "$OS" == "pacman" ]]
 then
     export package_manager="pacman -Sy"
-elif [[ "$OS" == "deb" ]]
+fi
+if [[ "$OS" == "deb" ]]
 then 
     export package_manager="apt install -y"
-else
-    if (( IS_UNKNOWN==1 ))
+fi
+if (( IS_UNKNOWN==1 ))
 then
     exit 1
 fi
@@ -78,9 +83,9 @@ PKGS=(
 )
 
 for PKG in "${PKGS[@]}"; do
-    echo "INSTALLING: ${PKG}"
+    yad --text --auto-close "INSTALLING: ${PKG}"
     VAR3="${package_manager}${space}${PKG}"
-    : $(VAR3)
+    $VAR3  > /dev/null 2>&1
 done
 # =================================================================
 echo "33"
