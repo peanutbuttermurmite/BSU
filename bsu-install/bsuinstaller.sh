@@ -70,7 +70,7 @@ fi
 space=" "
 yadtext="yad"
 installyad=$package_manager$space$yadtext
-: $(installyad)
+$installyad > /dev/null 2>&1
 (
 # =================================================================
 echo "# Installing dependencies" ; sleep 2
@@ -102,7 +102,7 @@ PYTHONDEPS=(
 for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     echo "INSTALLING: ${PYTHONDEP}"
     VAR4="${pip}${space}${PYTHONDEP}"
-    : $(VAR4)
+    $VAR4 > /dev/null 2>&1
 done
 # =================================================================
 echo "66"
