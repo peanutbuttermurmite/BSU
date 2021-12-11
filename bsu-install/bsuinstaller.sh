@@ -29,7 +29,7 @@ elif [[ $(which dnf) ]]; then
 else
    IS_UNKNOWN=1
 fi
-if (( IS_UNKNOWN==1 ))
+if (( IS_UNKNOWN == 1 ))
 then 
    printf "OS not found, install a supported package manager"
 fi
@@ -42,23 +42,24 @@ pacman="Arch"
 if [[ "$OS"=="suse" ]]
 then 
     export package_manager="zypper install -y"
-elif [[ "$OS"=="alpine2" ]]
+elif [[ "$OS" == "alpine2" ]]
 then 
     export package_manager="apk --update add"
-elif [[ "$OS"=="cent" ]]
+elif [[ "$OS" == "cent" ]]
 then 
     export package_manager="yum install -y"
 elif [[ "$OS"=="redhat" ]]
 then 
     export package_manager="dnf install -y"
-elif [[ "$OS"=="pacman" ]]
+elif [[ "$OS" == "pacman" ]]
 then
     export package_manager="pacman -Sy"
-elif [[ "$OS"=="deb" ]]
+elif [[ "$OS" == "deb" ]]
 then 
     export package_manager="apt install -y"
 else
-    printf "No package manager detected, aborting."
+    if (( IS_UNKNOWN==1 ))
+then
     exit 1
 fi
 space=" "
