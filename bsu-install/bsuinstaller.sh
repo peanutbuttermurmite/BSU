@@ -39,7 +39,7 @@ cent="CentOS"
 redhat="Fedora"
 deb="Debian"
 pacman="Arch"
-if [[ "$OS"=="suse" ]]
+if [[ "$OS" == "suse" ]]
 then 
     export package_manager="zypper install -y"
 elif [[ "$OS" == "alpine2" ]]
