@@ -25,7 +25,7 @@ elif [[ $(which pacman) ]]; then
    OS="Arch"
 elif [[ $(which dnf) ]]; then
    OS="Fedora"
-
+ 
 else
    IS_UNKNOWN=1
 fi
@@ -48,7 +48,7 @@ then
 elif [[ "$OS" == "cent" ]]
 then 
     export package_manager="yum install -y"
-elif [[ "$OS"=="redhat" ]]
+elif [[ "$OS" == "redhat" ]]
 then 
     export package_manager="dnf install -y"
 elif [[ "$OS" == "pacman" ]]
@@ -63,10 +63,9 @@ then
     exit 1
 fi
 space=" "
-cleanoutput=" &>/dev/null"
 yadtext="yad"
 installyad=$package_manager$space$yadtext
-$installyad
+: $(installyad)
 (
 # =================================================================
 echo "# Installing dependencies" ; sleep 2
@@ -80,8 +79,8 @@ PKGS=(
 
 for PKG in "${PKGS[@]}"; do
     echo "INSTALLING: ${PKG}"
-    VAR3="${package_manager}${space}${PKG}${cleanoutput}"
-    $VAR3
+    VAR3="${package_manager}${space}${PKG}"
+    : $(VAR3)
 done
 # =================================================================
 echo "33"
@@ -97,8 +96,8 @@ PYTHONDEPS=(
 )
 for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     echo "INSTALLING: ${PYTHONDEP}"
-    VAR4="${pip}${space}${PYTHONDEP}${cleanoutput}"
-    $VAR4
+    VAR4="${pip}${space}${PYTHONDEP}"
+    : $(VAR4)
 done
 # =================================================================
 echo "66"
