@@ -9,14 +9,89 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 import enquiries
 import turtle
+from tkinter.filedialog import askopenfilename
 typer.out("Welcome to Brawl Stars Utilities\n")
 time.sleep(0.0000000001)
-indow = tk.Tk()
-window.title("Creating Account...")
-window.geometry('250x250')
-window.bind("<x>", lambda e: window.destroy())
-canvas1 = tk.Canvas(root, width = 400, height = 300)
+windowacc = tk.Tk()
+windowacc.title("Login/Register Menu")
+windowacc.geometry('500x500')
+windowacc.bind("<x>", lambda e: window.destroy())
+canvas1 = tk.Canvas(windowacc, width = 800, height = 600)
 canvas1.pack()
+def registerbsusubmit():
+    subprocess.run(["bash","register.sh"],check=True)
+    exit()
+    
+def registerbsu():
+    regwin = tk.Tk()
+    regwin.title("Login/Register Menu")
+    regwin.geometry('500x500')
+    tk.Label(regwin, text="Username").grid(row=0)
+    tk.Label(regwin, text="Brawl Tag").grid(row=1)
+    tk.Label(regwin, text="Rare chance").grid(row=2)
+    tk.Label(regwin, text="Super rare chance").grid(row=3)
+    tk.Label(regwin, text="Epic chance").grid(row=4)
+    tk.Label(regwin, text="Mythic chance").grid(row=5)
+    tk.Label(regwin, text="Legendary chance").grid(row=6)
+    tk.Label(regwin, text="Number of boxes to be opened").grid(row=7)
+    username = tk.Entry(regwin)
+    brawltag = tk.Entry(regwin)
+    rareChance = tk.Entry(regwin)
+    superRareChance = tk.Entry(regwin)
+    epicChance = tk.Entry(regwin)
+    mythicChance = tk.Entry(regwin)
+    legendaryChance = tk.Entry(regwin)
+    boxesOpened= tk.Entry(regwin)
+    username.grid(row=0, column=1)
+    brawltag.grid(row=1, column=1)
+    rareChance.grid(row=2, column=1)
+    superRareChance.grid(row=3, column=1)
+    epicChance.grid(row=4, column=1)
+    mythicChance.grid(row=5, column=1)
+    legendaryChance.grid(row=6, column=1)
+    boxesOpened.grid(row=7, column=1)
+    username1 = username.get()
+    brawltag1 = brawltag.get()
+    legendaryChance1 = legendaryChance.get()
+    rareChance1 = rareChance.get()
+    superRareChance1 = superRareChance.get()
+    epicChance1 = epicChance.get()
+    mythicChance1 = mythicChance.get()
+    boxesOpened1= boxesOpened.get()
+    brawltag2 = repr(str(brawltag1))
+    username2 = repr(str(username1))
+    username3 = "username="+ username2
+    brawltag3 = "brawltag="+ brawltag2
+    chanceL = 1 - ((1 - legendaryChance1)**boxesOpened1)
+    chanceR = 1 - ((1 - rareChance1**boxesOpened1))
+    chanceSR = 1 - ((1 - superRareChance1**boxesOpened1))
+    chanceE = 1 - ((1 - epicChance1)**boxesOpened1)
+    chanceM = 1 - ((1 - mythicChance1**boxesOpened1))
+    chance2 = repr(str(chanceL))
+    chanceL3 = "chance="+ chance2
+    chancerare2 = repr(str(chanceR))
+    chanceR3 = "chancerare=" + chancerare2
+    chanceSuperRare2 = repr(str(chanceSR))
+    chanceSR3 = "chanceSuperRare=" +chanceSuperRare2
+    chanceEpic2 = repr(str(chanceE))
+    chanceE3 = "chanceEpic=" + chanceEpic2
+    chanceMythic2 = repr(str(chanceM))
+    chanceM3 = "chanceMythic="+chanceMythic2
+    bsusave ="\n" + brawltag3 + "\n" + username3 + "\n" + chanceR3 + "\n" + chanceSR3 + "\n" + chanceM3 + "\n" + chanceL3 + "\n" + chanceE3
+    Save = open("bsusave.py","w")
+    Save.write(bsusave)
+    Save.close()
+    submitbutton= tk.Button(text='Submit', command=registerbsusubmit)
+    canvas1.create_window(200,180, window=submitbutton)
+    regwin.mainloop()
+def loginbsu ():
+    subprocess.run(["bash","login.sh"],check=True)
+    exit()
+button1 = tk.Button(text='Login', command=loginbsu)
+canvas1.create_window(200, 180, window=button1)
+button2= tk.Button(text='Register', command=registerbsu)
+canvas1.create_window(350, 180, window=button2)
+windowacc.mainloop()
 brawlLobby1 = random.randint(1, 5)
 if brawlLobby1 == 1:
     typer.out("You got lobby 1\n")
@@ -24,17 +99,10 @@ if brawlLobby1 == 2:
     typer.out("You got lobby 2\n")
 if brawlLobby1 == 3:
     typer.out("You got lobby 3\n")
-username = input("Enter your username:")
-brawltag = input("Enter your brawl stars tag:")
-brawltag2 = repr(str(brawltag))
-username2 = repr(str(username))
-username3 = "username="+ username2
-brawltag3 = "brawltag="+ brawltag2
 options = [
     'Chance Calculator', 'Brawl stats', 'Power point calculator', 'Settings',
     'Battle Pass Calc', 'Update', 'Save Maker'
 ]
-
 choice = enquiries.choose('Choose one of these options:', options)
 print(choice, "was selected")
 if choice == 'Brawl stats':
@@ -56,50 +124,6 @@ if choice == 'Save Maker':
     time.sleep(5)
     subprocess.run(["bash","adder.sh"],check=True)
 
-print("Warning:Do not type Y if you have not created a .py file yet")
-nosave = input("Type N to create a .py file:")
-if nosave == "N":
-    print("Chances for all rarities can be seen when pressing the info icon on a big or mega box in the shop when tapping on a big or mega box in the shop.")
-    legendaryChance = float(input("What is your legendary chance?"))
-    rareChance = float(input("What is your rare chance?"))
-    superRareChance = float(input("What is your super rare chance?"))
-    epicChance = float(input("What is your epic chance?"))
-    mythicChance = float(input("What is your mythic chance?"))
-    boxesOpened = int(input("How many boxes do you want to open?"))
-    print("Your chances are displayed below")
-    chance = 1 - ((1 - legendaryChance)**boxesOpened)
-    print(chance, "%")
-    percent = "%"
-    chancerare = 1 - ((1 - rareChance**boxesOpened))
-    print(chancerare, "%")
-    chanceSuperRare = 1 - ((1 - superRareChance**boxesOpened))
-    print(chanceSuperRare, "%")
-    chanceEpic = 1 - ((1 - epicChance)**boxesOpened)
-    print(chanceEpic, "%")
-    chanceMythic = 1 - ((1 - mythicChance**boxesOpened))
-    print(chanceMythic, "%")
-    chance2 = repr(str(chance))
-    chance3 = "chance="+ chance2
-    chancerare2 = repr(str(chance))
-    chancerare3 = "chancerare=" + chancerare2
-    chanceSuperRare2 = repr(str(chanceSuperRare))
-    chanceSuperRare3 = "chanceSuperRare=" +chanceSuperRare2
-    chanceEpic2 = repr(str(chance))
-    chanceEpic3 = "chanceEpic=" + chanceEpic2
-    chanceMythic2 = repr(str(chance))
-    chanceMythic3 = "chanceMythic="+chanceMythic2
-    bsusave ="\n" + brawltag3 + "\n" + chancerare3 + "\n" + chanceSuperRare3 + "\n" + chanceMythic3 + "\n" + chance3
-    Save = open("bsusave1.py","w")
-    Save.write(bsusave + "\n" + username3 + "\n" + "#This file was generated by BSU(github.com/peanutbuttermurmite/BSU)")
-    Save.close()
-    bigboxes = boxesOpened / 3
-    megaboxes = boxesOpened / 10
-    print("Y/N")
-    convert = input("Convert normal boxes to big and mega boxes?")
-    if convert == "Y":
-        print("", megaboxes, "Mega Boxes", ",", "or", bigboxes, "bigboxes")
-else:
-    from bsusave1 import *
 window = tk.Tk()
 window.title("Welcome to Brawl Stars Utilities")
 window.geometry('250x250')
