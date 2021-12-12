@@ -1,11 +1,11 @@
 [Desktop Entry]
-Version=5
-Name[en_GB]=BSU
-GenericName[en_GB]=Brawl Stars Utilities
-Comment[en_GB]=Brawl Stars Utilities-designed to integrate with brawl Stars
-Exec=/opt/BSU/bsu-install/bsu --run
-Path=/opt/BSU/bsu-install
-Icon=/opt/BSU/bsu-install/bsu.png
-Terminal=true
 Type=Application
-Categories=Application
+Icon=/opt/BSU/bsu-install/bsu.png
+Name=BSU Desktop
+Exec=/opt/BSU/bsu-install/bsu --run
+Terminal=true
+Hidden=false
+Keywords=Brawl Stars;BSU
+Categories=Utility
+Comment=Brawl Stars Utilities-designed to integrate with Brawl Stars
+
