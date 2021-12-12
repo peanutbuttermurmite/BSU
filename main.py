@@ -11,6 +11,12 @@ import enquiries
 import turtle
 typer.out("Welcome to Brawl Stars Utilities\n")
 time.sleep(0.0000000001)
+indow = tk.Tk()
+window.title("Creating Account...")
+window.geometry('250x250')
+window.bind("<x>", lambda e: window.destroy())
+canvas1 = tk.Canvas(root, width = 400, height = 300)
+canvas1.pack()
 brawlLobby1 = random.randint(1, 5)
 if brawlLobby1 == 1:
     typer.out("You got lobby 1\n")
