@@ -112,11 +112,11 @@ git pull
 cd .. 
 cd BSU/bsu-install
 chmod ugo+rwx bsu 
+cp -r bsu.desktop ~/.local/share
 cd .. 
 cd ..
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
-cp -r bsu.desktop ~/.local/share
 printf "cd /opt/BSU && git pull && cd ~" >> ~/.bashrc
 # =================================================================
 echo "# All finished." ; sleep 2
