@@ -80,6 +80,7 @@ PKGS=(
 'python3-pip'
 'python3-pil'
 'python3-pil.imagetk'
+'python3-dotenv'
 )
 
 for PKG in "${PKGS[@]}"; do
@@ -97,7 +98,6 @@ PYTHONDEPS=(
 'PySimpleGUI'
 'pandas'
 'brawlstats'
-'pythondotenv'
 )
 for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     echo "INSTALLING: ${PYTHONDEP}"
