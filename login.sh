@@ -1,7 +1,7 @@
 #!/bin/bash
-read -p "Enter the name of your file:" usernamebsu
-printf "----> Installing .bsu file"
-mv $usernamebsu tmpbsu.zip
+echo "----> Installing .bsu file"
+echo $1
+mv $1 tmpbsu.zip
 unzip tmpbsu.zip
 rm tmpbsu.zip
-printf "----> Successfully Installed!"
+echo "----> Successfully Installed!"

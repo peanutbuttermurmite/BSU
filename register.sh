@@ -1,5 +1,6 @@
 #!/bin/bash
-printf "----> Zipping up"
+echo "----> Zipping up"
 zip -r bsusave.zip bsusave.py
 mv bsusave.zip bsusave.bsu
-printf "----> File saved"
+rm bsusave.py
+echo "----> File saved"
