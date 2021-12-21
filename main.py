@@ -13,10 +13,6 @@ import PySimpleGUI as sg
 typer.out("Welcome to Brawl Stars Utilities\n")
 time.sleep(0.0000000001)
 def registerbsu():
-<<<<<<< HEAD
-=======
-
->>>>>>> c435b7fcc0ab280a00c34b24ac3cd0f7d858f094
     sg.theme('Dark Blue 3')
     layoutregister = [
         [sg.Text('Please enter your chances')],
@@ -49,20 +45,17 @@ def registerbsu():
         mythicChance = values['MYTHIC']
         username = values['USERNAME']
         boxesOpened = values['BOXESOPENED']
-<<<<<<< HEAD
         brawltag = values ['BRAWLTAG']
         chanceL = 1 - (1 - int(legendaryChance)**int(boxesOpened))
         chanceR = 1 - (1 - int(rareChance)**int(boxesOpened))
         chanceSR = 1 - (1 - int(superRareChance)**int(boxesOpened))
         chanceE = 1 - (1 - int(epicChance)**int(boxesOpened))
         chanceM = 1 - (1 - int(mythicChance)**int(boxesOpened))
-=======
         chanceL = 1 - ((1 - legendaryChance)**boxesOpened)
         chanceR = 1 - ((1 - rareChance**boxesOpened))
         chanceSR = 1 - ((1 - superRareChance**boxesOpened))
         chanceE = 1 - ((1 - epicChance)**boxesOpened)
         chanceM = 1 - ((1 - mythicChance**boxesOpened))
->>>>>>> c435b7fcc0ab280a00c34b24ac3cd0f7d858f094
         username2 = repr(str(username))
         username3 = "username=" + username2
         brawltag2 = repr(str(brawltag))
@@ -95,7 +88,6 @@ def registerbsu():
   
     
 def loginbsu ():
-<<<<<<< HEAD
 
     loginlayout =  [
         [sg.T("")], [sg.Text("Choose a file: "), sg.Input(key='FILEPATH', size=(45, 1)), sg.FileBrowse(file_types=(("BSU Files", "*.bsu"),))],[sg.Button("Submit")]
@@ -113,11 +105,8 @@ def loginbsu ():
             break
     loginwin.close()
          
-
-=======
     subprocess.run(["bash","login.sh"],check=True)
     exit()
->>>>>>> c435b7fcc0ab280a00c34b24ac3cd0f7d858f094
 layoutmenu = [
     [sg.Text("Login/Register Menu")],
     [sg.Button("Login")],
