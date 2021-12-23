@@ -2,5 +2,5 @@
 echo "----> Zipping up"
 zip -r bsusave.zip bsusave.py settings.py
 mv bsusave.zip bsusave.bsu
-rm *.py
+rm settings.py bsusave.py
 echo "----> File saved"

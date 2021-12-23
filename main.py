@@ -57,23 +57,32 @@ def registerbsu():
         username4 = str(username3)
         brawltag2 = repr(str(brawltag))
         brawltag3 = "brawltag=" + brawltag2
+        brawltag4 = str(brawltag3)
         chance2 = repr(str(chanceL))
         chanceL3 = "chance="+ chance2
+        chanceL4 = str(chanceL3)
         chancerare2 = repr(str(chanceR))
         chanceR3 = "chancerare=" + chancerare2
+        chanceR4 = str(chanceR3)
         chanceSuperRare2 = repr(str(chanceSR))
-        chanceSR3 = "chanceSuperRare=" +chanceSuperRare2
+        chanceSR3 = "chanceSuperRare="+chanceSuperRare2
+        chanceSR4 = str(chanceSR3)
         chanceEpic2 = repr(str(chanceE))
         chanceE3 = "chanceEpic=" + chanceEpic2
+        chanceE4 = str(chanceE3)
         chanceMythic2 = repr(str(chanceM))
         chanceM3 = "chanceMythic="+chanceMythic2
+        chanceM4 = str(chanceM3)
         lobby1 = random.randint(1,5)
         Lobby1 = repr(str(lobby1))
         LOBBY1 = "brawlLobby1="+Lobby1
+        LOBBY2 = str(LOBBY1)
         use_ip = values["use_ip"]
-        USE_IP = "brawlstatsip="+use_ip 
-        bsusave ="\n" + brawltag3 + "\n" + username3 + "\n" + chanceR3 + "\n" + chanceSR3 + "\n" + chanceM3 + "\n" + chanceL3 + "\n" + chanceE3
-        settings = "\n" + LOBBY1 + "\n" + USE_IP
+        use_ip2 = repr(str(use_ip))
+        USE_IP = "brawlstatsip="+use_ip2
+        USE_IP2 = str(USE_IP)
+        bsusave =brawltag4 + "\n" + username4 + "\n" + chanceR4 + "\n" + chanceSR4 + "\n" + chanceM4 + "\n" + chanceL4 + "\n" + chanceE4
+        settings = LOBBY2 + "\n" + USE_IP2
         Save = open("bsusave.py","w")
         Save.write(bsusave)
         Save.close()
