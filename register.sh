@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "----> Zipping up"
-zip -r bsusave.zip bsusave.py
+zip -r bsusave.zip bsusave.py settings.py
 mv bsusave.zip bsusave.bsu
-rm bsusave.py
+rm *.py
 echo "----> File saved"

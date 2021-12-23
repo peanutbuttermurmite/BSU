@@ -10,6 +10,8 @@ from PIL import Image, ImageTk
 import enquiries
 import turtle
 import PySimpleGUI as sg
+exitcode =random.randint(0,500)
+exitcode2 = int(exitcode)
 typer.out("Welcome to Brawl Stars Utilities\n")
 time.sleep(0.0000000001)
 def registerbsu():
@@ -30,8 +32,9 @@ def registerbsu():
          sg.InputText(key='MYTHIC')],
         [sg.Text('Legendary chance', size=(10, 1)),
          sg.InputText(key='LEGENDARY')],
-        [sg.Text('Boxes opened', size= (10, 1)),
+        [sg.Text('Boxes opened', size= (10, 1)),     
          sg.InputText(key='BOXESOPENED')],
+        [sg.Checkbox('Use ip address for ease of use', default=False, key="use_ip")],
         [sg.Button('Submit'), sg.Button('Cancel')]
     ]
     regwin = sg.Window('BSU-Register', layoutregister)
@@ -70,17 +73,25 @@ def registerbsu():
         chanceE3 = "chanceEpic=" + chanceEpic2
         chanceMythic2 = repr(str(chanceM))
         chanceM3 = "chanceMythic="+chanceMythic2
+        lobby1 = random.randint(1,5)
+        Lobby1 = repr(str(lobby1))
+        LOBBY1 = "brawlLobby1="+Lobby1
+        use_ip = values["use_ip"]
+        USE_IP = "brawlstatsip="+use_ip 
         bsusave ="\n" + brawltag3 + "\n" + username3 + "\n" + chanceR3 + "\n" + chanceSR3 + "\n" + chanceM3 + "\n" + chanceL3 + "\n" + chanceE3
+        settings = "\n" + LOBBY1 + "\n" + USE_IP
         Save = open("bsusave.py","w")
         Save.write(bsusave)
         Save.close()
+        Save2 = open("settings.py", "w")
+        Save2.write(settings)
+        Save2.close()
         subprocess.run(["bash","register.sh"],check=True)
-        exit()
-
-        print("Your mythic chance was",values['mythicChance'])
+        exit(exitcode2)
     else:
         print('User cancelled')
         regwin.close()
+        exit(exitcode2)
   
    
     
@@ -104,9 +115,7 @@ def loginbsu ():
             subprocess.run(["bash","login.sh",filepath2],check=True)
             break
     loginwin.close()
-         
-    subprocess.run(["bash","login.sh"],check=True)
-    exit()
+    exit(exitcode2)
 layoutmenu = [
     [sg.Text("Login/Register Menu")],
     [sg.Button("Login")],
