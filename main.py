@@ -32,7 +32,7 @@ def registerbsu():
          sg.InputText(key='LEGENDARY')],
         [sg.Text('Boxes opened', size= (10, 1)),     
          sg.InputText(key='BOXESOPENED')],
-        [sg.Checkbox('Use ip address for ease of use', default=False, key="use_ip")],
+        [sg.Checkbox('Use my ip address for ease of use', default=False, key="use_ip")],
         [sg.Button('Submit'), sg.Button('Cancel')]
     ]
     regwin = sg.Window('BSU-Register', layoutregister)
@@ -155,31 +155,41 @@ if brawlLobby1 == 2:
     typer.out("Lobby 2 has been picked\n")
 if brawlLobby1 == 3:
     typer.out("Lobby 3 has been picked\n")
-options = [
-    'Chance Calculator', 'Brawl stats', 'Power point calculator', 'Settings',
-    'Battle Pass Calc', 'Update', 'Save Maker'
+optionslayout = [
+    [sg.Text("Select from Utilities")],
+    [sg.Button("Settings")],
+    [sg.Button("Chance calculator")],
+    [sg.Button("Brawl stats")],
+    [sg.Button("Power point calculator")],
+    [sg.Button("Save Maker")],
+    [sg.Button("Update BSU")]
 ]
-choice = enquiries.choose('Choose one of these options:', options)
-print(choice, "was selected")
-if choice == 'Brawl stats':
-    subprocess.run(["python", "brawlstats.py"], check=True)
-if choice == 'Power point calculator':
-    import powerpointcalc
+optionswin = sg.Window('BSU-Utilities',optionslayout)
+while True:  
+    event, values = optionswin.read(close=True)
+    if event == 'Brawl stats':
+        subprocess.run(["python", "brawlstats.py"], check=True)
+    if event == 'Power point calculator':
+        import powerpointcalc
+        print(powerpointcalc)
     exit(exitcode2)
-if choice == 'Battle Pass Calc':
-    subprocess.run(["python", "brawlpass.py"], check=True)
+    if event == 'Update BSU':
+        subprocess.run(["bash","updater.sh"],check=True)
     exit(exitcode2)
-if choice == 'Update':
-    subprocess.run(["bash","updater.sh"],check=True)
+    if event == 'Settings':
+       subprocess.run(["python", "brawlsettings.py"], check=True)
     exit(exitcode2)
-if choice == 'Settings':
-    subprocess.run(["python", "brawlsettings.py"], check=True)
-    exit(exitcode2)
-if choice == 'Save Maker':
-    print("This only works with files created with the power point calculator")
+    if event == 'Save Maker':
+        print("This only works with files created with the power point calculator")
     time.sleep(5)
     subprocess.run(["bash","adder.sh"],check=True)
     exit(exitcode2)
+    if event == 'Chance calculator':
+        break
+    if event == sg.WIN_CLOSED:
+        exit(exitcode2)
+optionswin.close()
+    
 
 window = tk.Tk()
 window.title("Welcome to Brawl Stars Utilities")
