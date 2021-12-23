@@ -5,11 +5,11 @@ import tkinter as tk
 import time
 import random
 import typer
-from tkinter import messagebox
 from PIL import Image, ImageTk
 import enquiries
-import turtle
 import PySimpleGUI as sg
+exitcode =random.randint(0,500)
+exitcode2 = int(exitcode)
 typer.out("Welcome to Brawl Stars Utilities\n")
 time.sleep(0.0000000001)
 def registerbsu():
@@ -30,8 +30,9 @@ def registerbsu():
          sg.InputText(key='MYTHIC')],
         [sg.Text('Legendary chance', size=(10, 1)),
          sg.InputText(key='LEGENDARY')],
-        [sg.Text('Boxes opened', size= (10, 1)),
+        [sg.Text('Boxes opened', size= (10, 1)),     
          sg.InputText(key='BOXESOPENED')],
+        [sg.Checkbox('Use ip address for ease of use', default=False, key="use_ip")],
         [sg.Button('Submit'), sg.Button('Cancel')]
     ]
     regwin = sg.Window('BSU-Register', layoutregister)
@@ -51,13 +52,9 @@ def registerbsu():
         chanceSR = 1 - (1 - int(superRareChance)**int(boxesOpened))
         chanceE = 1 - (1 - int(epicChance)**int(boxesOpened))
         chanceM = 1 - (1 - int(mythicChance)**int(boxesOpened))
-        chanceL = 1 - ((1 - legendaryChance)**boxesOpened)
-        chanceR = 1 - ((1 - rareChance**boxesOpened))
-        chanceSR = 1 - ((1 - superRareChance**boxesOpened))
-        chanceE = 1 - ((1 - epicChance)**boxesOpened)
-        chanceM = 1 - ((1 - mythicChance**boxesOpened))
         username2 = repr(str(username))
         username3 = "username=" + username2
+        username4 = str(username3)
         brawltag2 = repr(str(brawltag))
         brawltag3 = "brawltag=" + brawltag2
         chance2 = repr(str(chanceL))
@@ -70,17 +67,25 @@ def registerbsu():
         chanceE3 = "chanceEpic=" + chanceEpic2
         chanceMythic2 = repr(str(chanceM))
         chanceM3 = "chanceMythic="+chanceMythic2
+        lobby1 = random.randint(1,5)
+        Lobby1 = repr(str(lobby1))
+        LOBBY1 = "brawlLobby1="+Lobby1
+        use_ip = values["use_ip"]
+        USE_IP = "brawlstatsip="+use_ip 
         bsusave ="\n" + brawltag3 + "\n" + username3 + "\n" + chanceR3 + "\n" + chanceSR3 + "\n" + chanceM3 + "\n" + chanceL3 + "\n" + chanceE3
+        settings = "\n" + LOBBY1 + "\n" + USE_IP
         Save = open("bsusave.py","w")
         Save.write(bsusave)
         Save.close()
+        Save2 = open("settings.py", "w")
+        Save2.write(settings)
+        Save2.close()
         subprocess.run(["bash","register.sh"],check=True)
-        exit()
-
-        print("Your mythic chance was",values['mythicChance'])
+        exit(exitcode2)
     else:
         print('User cancelled')
         regwin.close()
+        exit(exitcode2)
   
    
     
@@ -98,19 +103,19 @@ def loginbsu ():
         event, values = loginwin.read()
         if event  == sg.WIN_CLOSED or event == "Exit":
             break
+        
         if event == "Submit":
             filepath = values["FILEPATH"]
             filepath2 = str(filepath)
             subprocess.run(["bash","login.sh",filepath2],check=True)
             break
     loginwin.close()
-         
-    subprocess.run(["bash","login.sh"],check=True)
-    exit()
+    exit(exitcode2)
 layoutmenu = [
     [sg.Text("Login/Register Menu")],
     [sg.Button("Login")],
     [sg.Button("Register")],
+    [sg.Button("QuickLogin")]
 ]
 
 
@@ -124,15 +129,23 @@ while True:
     if event == 'Register':
         registerbsu()
     if event == sg.WIN_CLOSED:
-        break
+        exit(exitcode2)
+    if event == 'QuickLogin':
+        if os.path.isfile('bsusave.py') and os.path.isfile('settings.py'):
+            break
+        else:
+            print("Make sure you have logged in at least once")
+            exit(exitcode2)
+
 accwin.close()
-brawlLobby1 = random.randint(1, 5)
+from bsusave import chance, chancerare, chanceSuperRare, chanceEpic, chanceMythic
+from settings import brawlLobby1
 if brawlLobby1 == 1:
-    typer.out("You got lobby 1\n")
+    typer.out("Lobby 1 has been picked\n")
 if brawlLobby1 == 2:
-    typer.out("You got lobby 2\n")
+    typer.out("Lobby 2 has been picked\n")
 if brawlLobby1 == 3:
-    typer.out("You got lobby 3\n")
+    typer.out("Lobby 3 has been picked\n")
 options = [
     'Chance Calculator', 'Brawl stats', 'Power point calculator', 'Settings',
     'Battle Pass Calc', 'Update', 'Save Maker'
@@ -143,20 +156,21 @@ if choice == 'Brawl stats':
     subprocess.run(["python", "brawlstats.py"], check=True)
 if choice == 'Power point calculator':
     import powerpointcalc
-    exit()
+    exit(exitcode2)
 if choice == 'Battle Pass Calc':
     subprocess.run(["python", "brawlpass.py"], check=True)
-    exit()
+    exit(exitcode2)
 if choice == 'Update':
     subprocess.run(["bash","updater.sh"],check=True)
-    exit()
+    exit(exitcode2)
 if choice == 'Settings':
     subprocess.run(["python", "brawlsettings.py"], check=True)
-    exit()
+    exit(exitcode2)
 if choice == 'Save Maker':
     print("This only works with files created with the power point calculator")
     time.sleep(5)
     subprocess.run(["bash","adder.sh"],check=True)
+    exit(exitcode2)
 
 window = tk.Tk()
 window.title("Welcome to Brawl Stars Utilities")
