@@ -81,6 +81,7 @@ PKGS=(
 'python3-pil'
 'python3-pil.imagetk'
 'python3-dotenv'
+'fontconfig'
 )
 
 for PKG in "${PKGS[@]}"; do
@@ -93,8 +94,6 @@ echo "33"
 echo "# Installing python packages" ; sleep 2
 pip="pip3 install"
 PYTHONDEPS=(
-'enquiries'
-'selenium'
 'PySimpleGUI'
 'pandas'
 'brawlstats'
@@ -113,11 +112,13 @@ cd ..
 cd BSU/bsu-install
 chmod ugo+rwx bsu 
 cp -r bsu.desktop ~/.local/share
+cp -r LilitaOne.ttf /usr/share/fonts
 cd .. 
 cd ..
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
 printf "cd /opt/BSU && git pull && cd ~" >> ~/.bashrc
+fc-cache -f -v
 # =================================================================
 echo "# All finished." ; sleep 2
 echo "100"
