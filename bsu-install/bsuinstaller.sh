@@ -112,7 +112,7 @@ cd ..
 cd BSU/bsu-install
 chmod ugo+rwx bsu 
 cp -r bsu.desktop ~/.local/share
-cp -r LilitaOne.ttf /usr/share/fonts
+cp -r LilitaOne.ttf /usr/local/share/fonts
 cd .. 
 cd ..
 mv BSU /opt
