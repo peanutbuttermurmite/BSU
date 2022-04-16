@@ -117,7 +117,7 @@ cd ..
 cd ..
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
-printf "cd /opt/BSU && git pull && cd ~" >> ~/.bashrc
+printf "cd /opt/BSU && git pull && cd -" >> ~/.bashrc
 fc-cache -f -v
 # =================================================================
 echo "# All finished." ; sleep 2
