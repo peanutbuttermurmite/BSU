@@ -73,6 +73,7 @@ if (( IS_UNKNOWN==1 ))
 then
     exit 1
 fi
+space= " "
 if (whiptail --title "BSU Installation" --yesno "Would you like to install offline capabilities?" $(stty -a | tr \; \\012 |
     egrep 'rows|columns' | cut '-d ' -f3)); then
     printf "Offline capabilities will be installed"
@@ -80,8 +81,7 @@ if (whiptail --title "BSU Installation" --yesno "Would you like to install offli
 else
     printf "Offline capabilities will not be installed"
     offlinemode=False
-fi
-    
+fi   
 
 PKGS=(
 'python3'
@@ -92,7 +92,8 @@ PKGS=(
 'python3-dotenv'
 'fontconfig'
 )
-
+{
+    printf "XXX\n0\n Installing Required Packages \nXXX"
 for PKG in "${PKGS[@]}"; do
     printf "INSTALLING: ${PKG}"
     VAR3="${package_manager}${space}${PKG}"
@@ -109,24 +110,26 @@ for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     VAR4="${pip}${space}${PYTHONDEP}"
     $VAR4 > /dev/null 2>&1
 done
+    printf "XXX\n50\n Finished Installing Packages \nXXX"
+    printf "XXX\n78\n Finishing Up... XXX"
 cd .. 
 git pull
 cd .. 
 cd BSU/bsu-install
 chmod ugo+rwx bsu 
 cp -r bsu.desktop ~/.local/share/applications
-cp -r LilitaOne.ttf /usr/local/share/fonts
 cd .. 
 cd ..
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
 printf "cd /opt/BSU && git pull && cd -" >> ~/.bashrc
-fc-cache -f -v
+    printf "XXX\n100\n Finished install \nXXX"
+} |whiptail --title "BSU Install" --gauge "Please wait while installing" 6 60 0
 if [ "$?" = -1 ] ; then
         whiptail --title "Installation Failed" --msgbox "The installation has been aborted" $(stty -a | tr \; \\012 |
     egrep 'rows|columns' | cut '-d ' -f3))
 	  exit 0
 fi
 
-whiptail --title "Getting Started with BSU" --msgbox "Run BSU by typing "bsu --run" into your terminal or use the .desktop file.Use bsu --help to show all commands" $(stty -a | tr \; \\012 |
+whiptail --title "Getting Started with BSU" --msgbox "Run BSU by typing 'bsu --run' into your terminal or use the .desktop file.Use 'bsu --help' to show all commands" $(stty -a | tr \; \\012 |
     egrep 'rows|columns' | cut '-d ' -f3))
