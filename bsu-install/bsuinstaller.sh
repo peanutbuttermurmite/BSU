@@ -73,7 +73,7 @@ if (( IS_UNKNOWN==1 ))
 then
     exit 1
 fi
-space= " "
+space=" "
 if (whiptail --title "BSU Installation" --yesno "Would you like to install offline capabilities?" $(stty -a | tr \; \\012 |
     egrep 'rows|columns' | cut '-d ' -f3)); then
     printf "Offline capabilities will be installed"
@@ -127,9 +127,9 @@ printf "cd /opt/BSU && git pull && cd -" >> ~/.bashrc
 } |whiptail --title "BSU Install" --gauge "Please wait while installing" 6 60 0
 if [ "$?" = -1 ] ; then
         whiptail --title "Installation Failed" --msgbox "The installation has been aborted" $(stty -a | tr \; \\012 |
-    egrep 'rows|columns' | cut '-d ' -f3))
+    egrep 'rows|columns' | cut '-d ' -f3)
 	  exit 0
 fi
 
 whiptail --title "Getting Started with BSU" --msgbox "Run BSU by typing 'bsu --run' into your terminal or use the .desktop file.Use 'bsu --help' to show all commands" $(stty -a | tr \; \\012 |
-    egrep 'rows|columns' | cut '-d ' -f3))
+    egrep 'rows|columns' | cut '-d ' -f3)
