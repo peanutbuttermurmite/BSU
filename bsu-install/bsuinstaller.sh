@@ -112,7 +112,7 @@ git pull
 cd .. 
 cd BSU/bsu-install
 chmod ugo+rwx bsu 
-cp -r bsu.desktop ~/.local/share
+cp -r bsu.desktop ~/.local/share/applications
 cp -r LilitaOne.ttf /usr/local/share/fonts
 cd .. 
 cd ..
