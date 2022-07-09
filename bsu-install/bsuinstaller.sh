@@ -73,9 +73,16 @@ if (( IS_UNKNOWN==1 ))
 then
     exit 1
 fi
-(
-# =================================================================
-echo "# Installing dependencies" ; sleep 2
+if (whiptail --title "BSU Installation" --yesno "Would you like to install offline capabilities?" $(stty -a | tr \; \\012 |
+    egrep 'rows|columns' | cut '-d ' -f3)); then
+    printf "Offline capabilities will be installed"
+    offlinemode=True
+else
+    printf "Offline capabilities will not be installed"
+    offlinemode=False
+fi
+    
+
 PKGS=(
 'python3'
 'python3-tk'
@@ -91,9 +98,6 @@ for PKG in "${PKGS[@]}"; do
     VAR3="${package_manager}${space}${PKG}"
     $VAR3  > /dev/null 2>&1
 done
-# =================================================================
-echo "33"
-echo "# Installing python packages" ; sleep 2
 pip="pip3 install"
 PYTHONDEPS=(
 'PySimpleGUI'
@@ -105,9 +109,6 @@ for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     VAR4="${pip}${space}${PYTHONDEP}"
     $VAR4 > /dev/null 2>&1
 done
-# =================================================================
-echo "66"
-echo "# Setting Up..." ; sleep 2
 cd .. 
 git pull
 cd .. 
@@ -121,20 +122,11 @@ mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
 printf "cd /opt/BSU && git pull && cd -" >> ~/.bashrc
 fc-cache -f -v
-# =================================================================
-echo "# All finished." ; sleep 2
-echo "100"
-) |
-yad --progress \
-  --title="BSU Installer" \
-  --text="Installing BSU" \
-  --percentage=0 \
-  --auto-close \
-  --auto-kill
 if [ "$?" = -1 ] ; then
-        yad --error \
-          --text="BSU install canceled."
+        whiptail --title "Installation Failed" --msgbox "The installation has been aborted" $(stty -a | tr \; \\012 |
+    egrep 'rows|columns' | cut '-d ' -f3))
 	  exit 0
 fi
 
-yad --text "Run BSU by typing "bsu --run" into your terminal or use the .desktop file.Use bsu --help to show all commands (WARNING:Use root for all commands)"
+whiptail --title "Getting Started with BSU" --msgbox "Run BSU by typing "bsu --run" into your terminal or use the .desktop file.Use bsu --help to show all commands" $(stty -a | tr \; \\012 |
+    egrep 'rows|columns' | cut '-d ' -f3))
