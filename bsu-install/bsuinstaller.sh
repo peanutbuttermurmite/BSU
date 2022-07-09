@@ -1,8 +1,9 @@
 #!/bin/bash
 if [ "$(id -u)" -ne 0 ]; then
 	printf "Run this script as root" >&2
-	exit 1
+	rootless=True
 fi
+rootless=False
 if ! command -v which &> /dev/null
 then
     printf "Dependency which could not be found"
@@ -19,7 +20,7 @@ then
     exit 1
 fi
 if [[ $(which yum) ]]; then
-   OS="CentOS
+   OS="CentOS"
 elif [[ $(which apt) ]]; then
    OS="Debian"
 elif [[ $(which apk) ]]; then
