@@ -13,8 +13,13 @@ then
     echo "Dependency git could not be found"
     exit 1
 fi
+if ! command -v whiptail &> /dev/null
+then
+    echo "Dependency whiptail could not be found"
+    exit 1
+fi
 if [[ $(which yum) ]]; then
-   OS="CentOS"
+   OS="CentOS
 elif [[ $(which apt) ]]; then
    OS="Debian"
 elif [[ $(which apk) ]]; then
@@ -67,10 +72,6 @@ if (( IS_UNKNOWN==1 ))
 then
     exit 1
 fi
-space=" "
-yadtext="yad"
-installyad=$package_manager$space$yadtext
-$installyad > /dev/null 2>&1
 (
 # =================================================================
 echo "# Installing dependencies" ; sleep 2
