@@ -99,19 +99,20 @@ for PKG in "${PKGS[@]}"; do
     VAR3="${package_manager}${space}${PKG}"
     $VAR3  > /dev/null 2>&1
 done
-  echo "50"
+  echo "28"
 pip="pip3 install"
 PYTHONDEPS=(
 'PySimpleGUI'
 'pandas'
 'brawlstats'
 )
+  echo "46"
 for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     echo "INSTALLING: ${PYTHONDEP}"
     VAR4="${pip}${space}${PYTHONDEP}"
     $VAR4 > /dev/null 2>&1
 done
-  echo "78"
+  echo "75"
 cd .. 
 git pull
 cd .. 
