@@ -93,12 +93,13 @@ PKGS=(
 'fontconfig'
 )
 {
-    printf "0"
+  echo "0"
 for PKG in "${PKGS[@]}"; do
     printf "INSTALLING: ${PKG}"
     VAR3="${package_manager}${space}${PKG}"
     $VAR3  > /dev/null 2>&1
 done
+  echo "50"
 pip="pip3 install"
 PYTHONDEPS=(
 'PySimpleGUI'
@@ -110,9 +111,7 @@ for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     VAR4="${pip}${space}${PYTHONDEP}"
     $VAR4 > /dev/null 2>&1
 done
-    printf "50"
-    sleep 1
-    printf "78"
+  echo "78"
 cd .. 
 git pull
 cd .. 
@@ -124,7 +123,7 @@ cd ..
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
 printf "cd /opt/BSU && git pull && cd -" >> ~/.bashrc
-    printf "100"
+  echo "100"
 } |whiptail --title "BSU Install" --gauge "Please wait while installing" 6 60 0
 if [ "$?" = -1 ] ; then
         whiptail --title "Installation Failed" --msgbox "The installation has been aborted" $(stty -a | tr \; \\012 |
