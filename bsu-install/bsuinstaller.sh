@@ -1,8 +1,8 @@
 #!/bin/bash
+rootless=false
 if [ "$(id -u)" -ne 0 ]; then
-	rootless=True
+	rootless=true
 fi
-rootless=False
 if ! command -v which &> /dev/null
 then
     printf "Dependency which could not be found"
@@ -13,6 +13,13 @@ then
     echo "Dependency git could not be found"
     exit 1
 fi
+if [ "$rootless" = true ]; then
+   git clone https://github.com/peanutbuttermurmite/easy-proot.git
+   cd easy-proot || exit
+   chmod +x start.sh
+   export PROOTCMD=apt update && apt install whiptail -y && cd .. && rm -rf easy-proot && bash bsuinstaller.sh
+   ./start.sh
+ fi
 if ! command -v whiptail &> /dev/null
 then
     echo "Dependency whiptail could not be found"
@@ -74,22 +81,14 @@ then
     exit 1
 fi
 space=" "
-if (( rootless==True ))
-then
-   git clone https://github.com/peanutbuttermurmite/easy-proot.git
-   cd easy-proot
-   chmod +x start.sh
-   export PROOTCMD=apt update && apt install git bash -y && cd .. && rm -rf easy-proot && bash bsuinstaller.sh
-   ./start.sh
- fi
     
 if (whiptail --title "BSU Installation" --yesno "Would you like to install offline capabilities?" $(stty -a | tr \; \\012 |
-    egrep 'rows|columns' | cut '-d ' -f3)); then
+    grep -E 'rows|columns' | cut '-d ' -f3)); then
     printf "Offline capabilities will be installed"
-    offlinemode=True
+    offlinemode=true
 else
     printf "Offline capabilities will not be installed"
-    offlinemode=False
+    offlinemode=false
 fi   
 
 PKGS=(
@@ -125,11 +124,9 @@ done
 cd .. 
 git pull
 cd .. 
-cd BSU/bsu-install
+(cd BSU/bsu-install || exit)
 chmod ugo+rwx bsu 
 cp -r bsu.desktop ~/.local/share/applications
-cd .. 
-cd ..
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
 printf "cd /opt/BSU && git pull && cd -" >> ~/.bashrc
@@ -137,9 +134,9 @@ printf "cd /opt/BSU && git pull && cd -" >> ~/.bashrc
 } |whiptail --title "BSU Install" --gauge "Please wait while installing" 6 60 0
 if [ "$?" = -1 ] ; then
         whiptail --title "Installation Failed" --msgbox "The installation has been aborted" $(stty -a | tr \; \\012 |
-    egrep 'rows|columns' | cut '-d ' -f3)
+    grep -E 'rows|columns' | cut '-d ' -f3)
 	  exit 0
 fi
 
 whiptail --title "Getting Started with BSU" --msgbox "Run BSU by typing 'bsu --run' into your terminal or use the .desktop file.Use 'bsu --help' to show all commands" $(stty -a | tr \; \\012 |
-    egrep 'rows|columns' | cut '-d ' -f3)
+    grep -E 'rows|columns' | cut '-d ' -f3)
