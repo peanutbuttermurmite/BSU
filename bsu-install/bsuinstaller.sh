@@ -85,14 +85,6 @@ then
 fi
 space=" "
     
-if (whiptail --title "BSU Installation" --yesno "Would you like to install offline capabilities?" $(stty -a | tr \; \\012 |
-    grep -E 'rows|columns' | cut '-d ' -f3)); then
-    printf "Offline capabilities will be installed"
-    offlinemode=true
-else
-    printf "Offline capabilities will not be installed"
-    offlinemode=false
-fi   
 
 PKGS=(
 'python3'
