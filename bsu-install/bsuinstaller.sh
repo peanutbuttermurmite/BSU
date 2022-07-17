@@ -15,9 +15,9 @@ then
 fi
 if [ "$rootless" = true ]; then
    git clone https://github.com/peanutbuttermurmite/easy-proot.git
+   "apt update && apt install git whiptail -y" >> easy-proot/assets/etc/skel/.bashrc
    cd easy-proot || exit
    chmod +x start.sh
-   export PROOTCMD=apt update && apt install whiptail -y && cd .. && rm -rf easy-proot && bash bsuinstaller.sh
    ./start.sh
  fi
 if ! command -v whiptail &> /dev/null
