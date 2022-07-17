@@ -1,6 +1,5 @@
 #!/bin/bash
 if [ "$(id -u)" -ne 0 ]; then
-	printf "Run this script as root" >&2
 	rootless=True
 fi
 rootless=False
@@ -71,9 +70,17 @@ then
 fi
 if (( IS_UNKNOWN==1 ))
 then
+    printf "OS not compatible, see wiki for more info"
     exit 1
 fi
 space=" "
+if (( rootless==True ))
+then
+   git clone https://github.com/peanutbuttermurmite/easy-proot.git
+   cd easy-proot
+   chmod +x start.sh
+   ./start.sh
+    
 if (whiptail --title "BSU Installation" --yesno "Would you like to install offline capabilities?" $(stty -a | tr \; \\012 |
     egrep 'rows|columns' | cut '-d ' -f3)); then
     printf "Offline capabilities will be installed"
