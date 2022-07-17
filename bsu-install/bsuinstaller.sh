@@ -79,7 +79,9 @@ then
    git clone https://github.com/peanutbuttermurmite/easy-proot.git
    cd easy-proot
    chmod +x start.sh
+   export PROOTCMD=apt update && apt install git bash -y && cd .. && rm -rf easy-proot && bash bsuinstaller.sh
    ./start.sh
+ fi
     
 if (whiptail --title "BSU Installation" --yesno "Would you like to install offline capabilities?" $(stty -a | tr \; \\012 |
     egrep 'rows|columns' | cut '-d ' -f3)); then
