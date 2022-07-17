@@ -16,7 +16,7 @@ fi
 if [ "$rootless" = true ]; then
    git clone https://github.com/peanutbuttermurmite/easy-proot.git
    STARTUPCMD="apt update && apt install git whiptail -y"
-    $STARTUPCMD>>easy-proot/assets/etc/skel/.bashrc
+    "$STARTUPCMD">>easy-proot/assets/etc/skel/.bashrc
    cd easy-proot || exit
    chmod +x start.sh
    ./start.sh
