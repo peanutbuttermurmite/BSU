@@ -118,7 +118,7 @@ cd ..
 git pull
 cd .. 
 (cd BSU/bsu-install || exit)
-chmod ugo+rwx bsu 
+chmod u+x bsu 
 cp -r bsu.desktop ~/.local/share/applications
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
