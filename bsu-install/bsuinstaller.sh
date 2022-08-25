@@ -108,6 +108,8 @@ done
 (cd .. || exit)
 git pull
 (cd bsu-install || exit)
+cd ..
+cd ..
 chmod u+x bsu
 cp -r bsu.desktop ~/.local/share/applications
 mv BSU /opt
