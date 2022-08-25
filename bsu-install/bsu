@@ -13,7 +13,7 @@ if [[ $name == $name2 ]]; then
 	echo "Run this script as root" >&2
 	exit 1
     fi
-    rm -f /usr/local/bin/bsu /opt/BSU/bsu-install/bsu
+    unlink /usr/local/bin/bsu /opt/BSU/bsu-install/bsu
     rm -rf /usr/local/bin/bsu > /dev/null
     rm -rf /opt/BSU > /dev/null
     rm -f ~/.local/share/applications/bsu.desktop > /dev/null
