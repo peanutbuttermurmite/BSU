@@ -18,7 +18,7 @@ if [[ $name == $name2 ]]; then
     rm -rf /opt/BSU > /dev/null
     rm -f ~/.local/share/applications/bsu.desktop > /dev/null
     rm -rf BSU > /dev/null
-    yad --text "Removal Complete"
+    whiptail --msgbox "Removal Complete" $(stty -a | tr \; \\012 |  grep -E 'rows|columns' | cut '-d ' -f3)
     git clone https://github.com/peanutbuttermurmite/BSU.git
     cd BSU/bsu-install
     chmod u+x bsu
@@ -27,7 +27,8 @@ if [[ $name == $name2 ]]; then
     mv BSU /opt
     ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
     cp -r bsu.desktop ~/.local/share
-    yad --text "BSU has been successfully reinstalled"
+    whiptail --msgbox "BSU has been successfully reinstalled" $(stty -a | tr \; \\012 |
+    grep -E 'rows|columns' | cut '-d ' -f3)
     exit 1
 fi
 if [[ $name == $name3 ]]; then
@@ -39,8 +40,8 @@ if [[ $name == $name3 ]]; then
    rm -rf /opt/BSU > /dev/null
    rm -f ~/.local/share/applications/bsu.desktop > /dev/null
    rm -rf BSU > /dev/null
-   yad --text "Removal Complete"
-fi
+   whiptail --msgbox "Uninstallation Complete" $(stty -a | tr \; \\012 |  grep -E 'rows|columns' | cut '-d ' -f3)
+fi  
 if [[ $name == $name4 ]]; then
    if [ "$(id -u)" -ne 0 ]; then
 	echo "Run this script as root" >&2
@@ -50,5 +51,5 @@ if [[ $name == $name4 ]]; then
    python3 main.py
 fi
 if [[ $name == $name5 ]]; then
-    yad --text"Options:\n--reinstall:Reinstalls BSU\n--uninstall:Uninstall BSU\n--run:Runs BSU\n--help:Shows available commands"
+    whiptail --msgbox "Options:\n--reinstall:Reinstalls BSU\n--uninstall:Uninstall BSU\n--run:Runs BSU\n--help:Shows available commands" $(stty -a | tr \; \\012 |  grep -E 'rows|columns' | cut '-d ' -f3)
 fi
