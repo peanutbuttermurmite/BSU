@@ -98,7 +98,7 @@ PKGS=(
 for PKG in "${PKGS[@]}"; do
     printf "INSTALLING: ${PKG}"
     VAR3="${package_manager}${space}${PKG}"
-    $VAR3  > /dev/null 2>&1
+    $VAR3 > /dev/null 2>&1
 done
   echo "28"
 pip="pip3 install"
