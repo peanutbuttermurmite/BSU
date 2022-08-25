@@ -105,9 +105,9 @@ for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     $VAR4 > /dev/null 2>&1
 done
   echo "75"
-(cd ..)
+(cd .. || exit)
 git pull
-(cd bsu-install)
+(cd bsu-install || exit)
 chmod u+x bsu
 cp -r bsu.desktop ~/.local/share/applications
 mv BSU /opt
