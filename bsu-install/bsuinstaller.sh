@@ -98,23 +98,28 @@ PYTHONDEPS=(
 'pandas'
 'brawlstats'
 )
-  echo "46"
+  echo "40"
 for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     echo "INSTALLING: ${PYTHONDEP}"
     VAR4="${pip}${space}${PYTHONDEP}"
     $VAR4 > /dev/null 2>&1
 done
-  echo "75"
-(cd .. || exit)
-git pull
-(cd bsu-install || exit)
+  echo "52"
+cd .. && git pull
+  echo "64"
+cd bsu-install && chmod u+x bsu && cp -r bsu.desktop ~/.local/share/applications
 cd ..
 cd ..
-chmod u+x bsu
-cp -r bsu.desktop ~/.local/share/applications
+
+
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
 printf "cd /opt/BSU && git pull && cd -" >> ~/.bashrc
+sleep 0.1
+echo "78"
+sleep 0.1 
+echo "88"
+sleep 0.1
   echo "100"
 } |whiptail --title "BSU Install" --gauge "Please wait while installing" 6 60 0
 if [ "$?" = -1 ] ; then
