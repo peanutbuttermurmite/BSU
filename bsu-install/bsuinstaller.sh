@@ -1,7 +1,6 @@
 #!/bin/bash
-rootless=false
 if [ "$(id -u)" -ne 0 ]; then
-	rootless=true
+	exit 1
 fi
 if ! command -v which &> /dev/null
 then
@@ -13,14 +12,6 @@ then
     echo "Dependency git could not be found"
     exit 1
 fi
-if [ "$rootless" = true ]; then
-   git clone https://github.com/peanutbuttermurmite/easy-proot.git
-   STARTUPCMD="apt update && apt install git whiptail -y && cd .. && bash bsui*"
-  echo $STARTUPCMD>>easy-proot/assets/etc/skel/.bashrc
-   cd easy-proot || exit
-   chmod +x start.sh
-   ./start.sh
- fi
 if ! command -v whiptail &> /dev/null
 then
     echo "Dependency whiptail could not be found"
@@ -114,11 +105,8 @@ for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     $VAR4 > /dev/null 2>&1
 done
   echo "75"
-cd .. 
-git pull
-cd .. 
-(cd BSU/bsu-install || exit)
-chmod u+x bsu 
+(cd ..; git pull || exit)
+(cd bsu-install; chmod u+x bsu || exit)
 cp -r bsu.desktop ~/.local/share/applications
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
