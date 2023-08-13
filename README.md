@@ -1,6 +1,6 @@
 # BSU
 A combination of brawl stars utilities
-
+Deveolpment restarting soon
 Dependencies:bash(all other dependencies handled by installer)
 Installer currently only supports a handful of distributions, scuh as Fedora, CentOS, Debian, Ubuntu and OpenSuse
 Notes:
