@@ -47,7 +47,12 @@ if [[ $name == $name4 ]]; then
 	echo "Run this script as root" >&2
 	exit 1
    fi
+   mkdir /opt/tmpbsu
    cd /opt/BSU
+   mv *.bsu /opt/tmpbsu && mv *.env /opt/tmpbsu
+   git pull origin desktop
+   cd /opt/tmpbsu && mv *.bsu /opt/BSU && mv *.env /opt/BSU
+   rm -rf /opt/tmpbsu
    python3 main.py
 fi
 if [[ $name == $name5 ]]; then
