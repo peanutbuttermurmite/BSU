@@ -1,6 +1,5 @@
 #!/bin/bash
 if [ "$(id -u)" -ne 0 ]; then
-	printf "Run this script as root" >&2
 	exit 1
 fi
 if ! command -v which &> /dev/null
@@ -11,6 +10,11 @@ fi
 if ! command -v git &> /dev/null
 then
     echo "Dependency git could not be found"
+    exit 1
+fi
+if ! command -v whiptail &> /dev/null
+then
+    echo "Dependency whiptail could not be found"
     exit 1
 fi
 if [[ $(which yum) ]]; then
@@ -65,15 +69,12 @@ then
 fi
 if (( IS_UNKNOWN==1 ))
 then
+    printf "OS not compatible, see wiki for more info"
     exit 1
 fi
 space=" "
-yadtext="yad"
-installyad=$package_manager$space$yadtext
-$installyad > /dev/null 2>&1
-(
-# =================================================================
-echo "# Installing dependencies" ; sleep 2
+    
+
 PKGS=(
 'python3'
 'python3-tk'
@@ -83,56 +84,49 @@ PKGS=(
 'python3-dotenv'
 'fontconfig'
 )
-
+{
+  echo "0"
 for PKG in "${PKGS[@]}"; do
     printf "INSTALLING: ${PKG}"
     VAR3="${package_manager}${space}${PKG}"
-    $VAR3  > /dev/null 2>&1
+    $VAR3 > /dev/null 2>&1
 done
-# =================================================================
-echo "33"
-echo "# Installing python packages" ; sleep 2
+  echo "28"
 pip="pip3 install"
 PYTHONDEPS=(
 'PySimpleGUI'
 'pandas'
 'brawlstats'
 )
+  echo "40"
 for PYTHONDEP in "${PYTHONDEPS[@]}"; do
     echo "INSTALLING: ${PYTHONDEP}"
     VAR4="${pip}${space}${PYTHONDEP}"
     $VAR4 > /dev/null 2>&1
 done
-# =================================================================
-echo "66"
-echo "# Setting Up..." ; sleep 2
-cd .. 
-git pull
-cd .. 
-cd BSU/bsu-install
-chmod ugo+rwx bsu 
-cp -r bsu.desktop ~/.local/share
-cp -r LilitaOne.ttf /usr/share/fonts
-cd .. 
+  echo "52"
+cd .. && git pull
+  echo "64"
+cd bsu-install && chmod u+x bsu && cp -r bsu.desktop ~/.local/share/applications
 cd ..
+cd ..
+
+
 mv BSU /opt
 ln -s /opt/BSU/bsu-install/bsu /usr/local/bin/bsu
-printf "cd /opt/BSU && git pull && cd ~" >> ~/.bashrc
-fc-cache -f -v
-# =================================================================
-echo "# All finished." ; sleep 2
-echo "100"
-) |
-yad --progress \
-  --title="BSU Installer" \
-  --text="Installing BSU" \
-  --percentage=0 \
-  --auto-close \
-  --auto-kill
+printf "cd /opt/BSU && git pull && cd -" >> ~/.bashrc
+sleep 0.1
+echo "78"
+sleep 0.1 
+echo "88"
+sleep 0.1
+  echo "100"
+} |whiptail --title "BSU Install" --gauge "Please wait while installing" 6 60 0
 if [ "$?" = -1 ] ; then
-        yad --error \
-          --text="BSU install canceled."
+        whiptail --title "Installation Failed" --msgbox "The installation has been aborted" $(stty -a | tr \; \\012 |
+    grep -E 'rows|columns' | cut '-d ' -f3)
 	  exit 0
 fi
 
-yad --text "Run BSU by typing "bsu --run" into your terminal or use the .desktop file.Use bsu --help to show all commands (WARNING:Use root for all commands)"
+whiptail --title "Getting Started with BSU" --msgbox "Run BSU by typing 'bsu --run' into your terminal or use the .desktop file.Use 'bsu --help' to show all commands" $(stty -a | tr \; \\012 |
+    grep -E 'rows|columns' | cut '-d ' -f3)
