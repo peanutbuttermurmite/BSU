@@ -1,7 +1,7 @@
 # BSU
 A combination of brawl stars utilities
-
-Dependencies:git,bash(all other dependencies handled by installer)
+Deveolpment restarting soon
+Dependencies:bash(all other dependencies handled by installer)
 Installer currently only supports a handful of distributions, scuh as Fedora, CentOS, Debian, Ubuntu and OpenSuse
 Notes:
 iOS + Android support deprecated
