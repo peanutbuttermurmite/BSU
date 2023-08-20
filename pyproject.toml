@@ -10,6 +10,9 @@ pandas = "^1.3.4"
 python-dotenv = "^0.19.2"
 enquiries = "^0.1.0"
 PySimpleGUI = "^4.55.1"
+pywaffle = "^0.6.4"
+fonts = "^0.0.3"
+edx-opaque-keys = "^2.4.0"
 
 [tool.poetry.dev-dependencies]
 

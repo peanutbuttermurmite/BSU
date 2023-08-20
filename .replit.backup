@@ -1,0 +1,2 @@
+language = "tkinter"
+run = "cd BSU && python3 main.py"

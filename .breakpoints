@@ -1,5 +1,13 @@
 {
   "files": {
+    ".replit": [
+      {
+        "id": "182f6df3-90f9-46f2-9678-5ff59eb35c92",
+        "line": 1,
+        "version": 442,
+        "index": 0
+      }
+    ],
     "bob.py": [
       {
         "id": "da668510-2bc4-4c8d-a4b7-00d8160eb80f",
