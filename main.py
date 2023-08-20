@@ -3,15 +3,51 @@ import subprocess
 import time
 import random
 import typer
-from PIL import Image, ImageTk
 import PySimpleGUI as sg
 sg.theme("DarkRed1")   
+sg.DEFAULT_FONT = "LilitaOne"
 exitcode = random.randint(0, 500)
 exitcode2 = int(exitcode)
 typer.out("Welcome to Brawl Stars Utilities\n")
-time.sleep(0.0000000001)
 
+def load_env_file(dotenv_path, override=False):
+    with open(dotenv_path) as file_obj:
+        lines = file_obj.read().splitlines() 
+    dotenv_vars = {}
+    for line in lines:
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
 
+        key, value = line.split("=", maxsplit=1)
+        dotenv_vars.setdefault(key, value)
+
+    if override:
+        os.environ.update(dotenv_vars)
+    else:
+        for key, value in dotenv_vars.items():
+            os.environ.setdefault(key, value)
+def saveapikey():
+    sg.theme('DarkRed1')
+    layoutapi= [
+    [sg.VPush()], [sg.Text('Saving an API key will allow you to access Brawl Stats', size=(10,1)), sg.InputText(key='APIKEY')],[sg.Button('Submit'), sg.Button('Cancel')], [sg.VPush()]
+        
+    ]
+    apiwin = sg.Window('BSU-Register',
+                       layoutapi,
+                       element_justification='center',
+                       resizable=True).Finalize()
+    event, values = apiwin.read(close=True)
+    if event == 'Submit':
+        apikey=values['APIKEY']
+        apitext="APIKEY="+apikey
+        envfile=open("api.env","w")
+        envfile.write(apitext)
+        envfile.close()
+        exit("API key saved successfully")
+    else:
+        apiwin.close()
+        exit("Saving API key failed")
 def registerbsu():
     sg.theme('DarkRed1')
     layoutregister = [
@@ -36,11 +72,6 @@ def registerbsu():
         [
             sg.Text('Boxes opened', size=(10, 1)),
             sg.InputText(key='BOXESOPENED')
-        ],
-        [
-            sg.Checkbox('Use my ip address for ease of use',
-                        default=False,
-                        key="use_ip")
         ], [sg.Button('Submit'), sg.Button('Cancel')], [sg.VPush()]
     ]
     regwin = sg.Window('BSU-Register',
@@ -88,12 +119,8 @@ def registerbsu():
         Lobby1 = repr(str(lobby1))
         LOBBY1 = "brawlLobby1=" + Lobby1
         LOBBY2 = str(LOBBY1)
-        use_ip = values["use_ip"]
-        use_ip2 = repr(str(use_ip))
-        USE_IP = "brawlstatsip=" + use_ip2
-        USE_IP2 = str(USE_IP)
-        bsusave = brawltag4 + "\n" + username4 + "\n" + chanceR4 + "\n" + chanceSR4 + "\n" + chanceM4 + "\n" + chanceL4 + "\n" + chanceE4
-        settings = LOBBY2 + "\n" + USE_IP2
+        bsusave = "brawltag4=" + brawltag4 + "\n" + "username4="+ username4 + "\n" + "chanceR4=" + chanceR4 + "\n" + "chanceSR4="+ chanceSR4 + "\n" + "chanceM4=" + chanceM4 + "\n"+"chanceL4=" + chanceL4 + "\n" +"chanceE4="+ chanceE4
+        settings = LOBBY2
         Save = open("bsusave.py", "w")
         Save.write(bsusave)
         Save.close()
@@ -101,11 +128,11 @@ def registerbsu():
         Save2.write(settings)
         Save2.close()
         subprocess.run(["bash", "register.sh"], check=True)
-        exit(exitcode2)
+        exit("Registration successful")
     else:
         print('User cancelled')
         regwin.close()
-        exit(exitcode2)
+        exit("Registration aborted")
 
 
 def loginbsu():
@@ -133,11 +160,10 @@ def loginbsu():
             subprocess.run(["bash", "login.sh", filepath2], check=True)
             break
     loginwin.close()
-    exit(exitcode2)
 
 
 layoutmenu = [[sg.VPush()], [sg.Text("Login/Register Menu")],
-              [sg.Button("Login")], [sg.Button("Register")],
+              [sg.Button("Login")], [sg.Button("Save API Key")], [sg.Button("Register")],
               [sg.Button("QuickLogin")], [sg.VPush()]]
 
 accwin = sg.Window('BSU-Login/Register',
@@ -151,14 +177,15 @@ while True:
         break
     if event == 'Register':
         registerbsu()
+    if event == 'Save API Key':
+        saveapikey()
     if event == sg.WIN_CLOSED:
-        exit(exitcode2)
+        exit("Program aborted")
     if event == 'QuickLogin':
         if os.path.isfile('bsusave.py') and os.path.isfile('settings.py'):
             break
         else:
-            print("Make sure you have logged in at least once")
-            exit(exitcode2)
+            exit("Make sure you have logged in at least once")
 
 accwin.close()
 from bsusave import chance, chancerare, chanceSuperRare, chanceEpic, chanceMythic
@@ -171,17 +198,12 @@ if brawlLobby1 == 3:
     typer.out("Lobby 3 has been picked\n")
 optionslayout = [[sg.VPush()],[sg.Text("Select from Utilities")], [sg.Button("Settings")],
                  [sg.Button("Chance calculator")], [sg.Button("Brawl stats")],
-                 [sg.Button("Power point calculator")],
                  [sg.Button("Save Maker")], [sg.Button("Update BSU")],[sg.VPush()]]
 optionswin = sg.Window('BSU-Utilities', optionslayout,element_justification='center',resizable=True).Finalize()
 while True:
     event, values = optionswin.read(close=True)
     if event == 'Brawl stats':
         subprocess.run(["python", "brawlstats.py"], check=True)
-    if event == 'Power point calculator':
-        import powerpointcalc
-        print(powerpointcalc)
-        exit(exitcode2)
     if event == 'Update BSU':
         subprocess.run(["bash", "updater.sh"], check=True)
         exit(exitcode2)
