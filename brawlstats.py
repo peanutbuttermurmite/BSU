@@ -1,12 +1,35 @@
 import os
-from dotenv import load_dotenv
 import brawlstats as brawl
 import pandas as pd
+from .bsusave import brawltag4
+import PySimpleGUI as sg
+sg.theme("DarkRed1")   
+sg.DEFAULT_FONT = "LilitaOne"
+playertag=brawltag4
+def load_env_file(dotenv_path, override=False):
+    with open(dotenv_path) as file_obj:
+        lines = file_obj.read().splitlines() 
+    dotenv_vars = {}
+    for line in lines:
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+
+        key, value = line.split("=", maxsplit=1)
+        dotenv_vars.setdefault(key, value)
+
+    if override:
+        os.environ.update(dotenv_vars)
+    else:
+        for key, value in dotenv_vars.items():
+            os.environ.setdefault(key, value)
+
 try:
-    load_dotenv()
-    TOKEN = os.getenv("BRAWL_TOKEN")
-    client = brawl.Client(TOKEN)
-    player = client.get_player("2GGYGV8YQ")
+    load_env_file("api.env")
+    apikey=os.environ.get("APIKEY")
+    client = brawl.Client(apikey)
+    print(apikey)
+    player = client.get_player(playertag)
     print("Connected successfully and returned player: ",player.name)
 except:
     print("an error occured with connection")
