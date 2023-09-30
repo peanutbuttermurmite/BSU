@@ -82,7 +82,7 @@ PKGS=(
 'python3-pil'
 'python3-pil.imagetk'
 'python3-dotenv'
-'fontconfig'
+'whiptail'
 )
 {
   echo "0"
