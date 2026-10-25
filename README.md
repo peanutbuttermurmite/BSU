@@ -1,134 +1,50 @@
 # BSU
-A combination of brawl stars utilities
-Deveolpment restarting soon
-Dependencies:bash(all other dependencies handled by installer)
-Installer currently only supports a handful of distributions, scuh as Fedora, CentOS, Debian, Ubuntu and OpenSuse
-Notes:
-iOS + Android support deprecated
-Use apps like userland for android or SSH into a Debian/Ubuntu linux machine.
 
-Changelog:
+A Linux-focused utility suite combining probability calculations, statistics, and data-management tools in one application.
 
-V1(Beta)
-Added README.md
+## Features
 
-V2(Beta):
+- **Probability calculator** — calculates and displays the chances of different rarity outcomes.
+- **Power-point calculator** — provides calculations for power-point values.
+- **Statistics utility** — includes tools for viewing player statistics.
+- **Save and load functionality** — stores data for later use.
+- **Data integration** — combines calculator data with saved data.
+- **Menu-driven interface** — provides a central way to access the application's utilities.
+- **Linux installation scripts** — supports installation on selected Linux distributions.
 
-Updated the UI and added rare, epic , mythic, super rare chances.Power point calculator is currently disabled for maintenance.
+*Some features may require maintenance.*
 
-V3(Beta):
-Displayed percentages as output of all of the chances.Top to bottom:Legendary 1st,Rare 2nd, Super Rare 3rd, Epic 4th and Mythic 5th.
+## Technology Stack
 
-V4(Beta):
-Power point calculator enabled-access by  closing the window where the percentages are.
+- **Python** — application utilities and calculations
+- **Bash** — shell scripts and installation tooling
+- **Linux** — primary target platform
 
+## Platform Compatibility
 
-V4.9.1:(Beta)
-Added text next to percentages to make it easier to know your chances.
+BSU is designed primarily for Linux, with installation support for Debian, Ubuntu, Fedora, CentOS, and openSUSE.
 
-V4.9.5:(Beta)
-Uploaded to GitHub.
-More details coming so stay tuned.
-Updated repo now available for download.
-Renamed to BSU.
+## Getting Started
 
-V4.9.6:(Beta):
-New share feature for powerpoint calculator:
-When selecting 'Save As', name it 'share' without the quotation marks to print the data in the terminal.
-Sharing tools will become available soon.
-Added brawlstats, a new tool to see your stats
-V4.9.7:(Beta):
-New selection menu (3 out of 3 utilities done)
-Random Background (3 out of 3 done)
+Installation requirements may vary depending on your Linux distribution.
 
-V4.9.8(Beta):
-Updating current gihub repo.
-V4.9.9(Beta):
+Before running an installation script:
 
-Added selection menu.
-Databases fixed and ready.
-Keypress integration(X to exit a window).
-Added typer.py.
+1. Review the script and its dependencies.
+2. Check compatibility with your Linux distribution.
+3. Inspect scripts before executing them, particularly when elevated permissions are involved.
 
-V5(Pre-Release 1):
+## Development
 
-Database replacement with save and load file system.(Completed)
-GitHub update in progress
+BSU has evolved through multiple iterations, incorporating changes to its interface, calculators, data handling, installation scripts, and graphical-interface support.
 
-V5.2.0:
+The project brings together Python development, Bash scripting, Linux tooling, and iterative software development.
 
-Added many features including an installation script compatible with Debian/Ubuntu
+## Potential Improvements
 
-Squashed many bugs
-
-Created .deb Release
-
-Progress bar added to installation script
-
-V5.3.0:
-
-Created wiki
-
-Fixed the save and load file system 
-
-Added adder.py, a tool to integrate the data from powerpointcalc with the save file.
-
-V5.4.0:
-
-GitHub Update :
-
-\ Update README.md
-
-\ Add V5.3.0 update to GitHub
-
-Upcoming features:
-
-V5.5.0:
-
-Begin to create pages on the wiki
-
-Create informative pages on github.io website
-
-V5.6.0:
-
-Update Installation script with support for distributions such as Fedora and CentOS.
-
-V5.7.0:
-
-Add .rpm binary and support for other distribution binaries
-
-
-V5.8.0:
-
-Installation script updated with GUI progress bar and general GUI
-
-V5.9.0:
-
-Completed wiki and squashing remaining bugs.
-
-V6.0.0:
-Upload to PyPi
-
-Updated .deb, .rpm and other binaries.
-
-GUI Integration with every script except powerpointcalc(implemented in future updates)
-
-V6.1.0:
-
-GUI support for main.py
-
-V6.2.0:
-
-GUI support for bash scripts
-
-V6.3.0:
-
-GUI support for brawl stats
-
-V6.4.0:
-
-Brawl Stats rework (BrawlStats V2)
-
-V6.5.0:
-
-Upload to Replit Apps
+- Verify compatibility with current Linux distributions.
+- Update outdated dependencies and installation instructions.
+- Add automated tests for the calculation logic.
+- Improve input validation and error handling.
+- Expand setup and usage documentation.
+- Add screenshots or a demonstration of the interface.
