@@ -32,7 +32,7 @@ Before running an installation script:
 
 1. Review the script and its dependencies.
 2. Check compatibility with your Linux distribution.
-3. Inspect scripts before executing them, particularly when elevated permissions are involved.
+
 
 ## Development
 
