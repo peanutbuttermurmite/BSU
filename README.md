@@ -26,13 +26,7 @@ BSU is designed primarily for Linux, with installation support for Debian, Ubunt
 
 ## Getting Started
 
-Installation requirements may vary depending on your Linux distribution.
-
-Before running an installation script:
-
-1. Review the script and its dependencies.
-2. Check compatibility with your Linux distribution.
-
+Please refer to the wiki for installation instructions, dependencies and compatibility
 
 ## Development
 
@@ -46,5 +40,4 @@ The project brings together Python development, Bash scripting, Linux tooling, a
 - Update outdated dependencies and installation instructions.
 - Add automated tests for the calculation logic.
 - Improve input validation and error handling.
-- Expand setup and usage documentation.
 - Add screenshots or a demonstration of the interface.
